@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAIBO — AI @ HOME | WORK | PLAY | SABC+ Concept Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:   #07070d;
+    --deep:    #0e0e1a;
+    --surface: #13131f;
+    --cyan:    #00e5ff;
+    --gold:    #f5c542;
+    --red:     #ff2d55;
+    --white:   #f0f0f5;
+    --muted:   #7a7a99;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Space Grotesk', sans-serif;
+    --font-serif:   'DM Serif Display', serif;
+    --font-mono:    'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,229,255,.012) 2px, rgba(0,229,255,.012) 4px);
+    pointer-events: none; z-index: 9999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(7,7,13,.9); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,229,255,.1);
+  }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .15em; color: var(--cyan); }
+  .nav-logo span { color: var(--gold); }
+  .nav-tag { font-family: var(--font-mono); font-size: .62rem; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(0,229,255,.18); padding: .3rem .8rem; border-radius: 2px; }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .sabc-logo { display: inline-block; vertical-align: middle; }
+
+  /* ══════════════════════════════════════
+     HERO — OPENING STATEMENT
+  ══════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 8rem 4rem 5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(0,229,255,.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 50%, rgba(245,197,66,.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  /* horizontal scan line sweep */
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono); font-size: .68rem; letter-spacing: .35em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 2rem; z-index: 2;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 18vw, 16rem);
+    line-height: .88; letter-spacing: .02em; color: var(--white);
+    z-index: 2; position: relative;
+  }
+  .hero-title .bang { color: var(--cyan); }
+
+  /* ghost title behind */
+  .hero-title-ghost {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--font-display); font-size: clamp(10rem, 25vw, 22rem);
+    letter-spacing: .02em; color: transparent;
+    -webkit-text-stroke: 1px rgba(0,229,255,.05);
+    pointer-events: none; white-space: nowrap; z-index: 1;
+  }
+
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: clamp(.95rem, 1.8vw, 1.2rem);
+    letter-spacing: .1em;
+    color: var(--gold);
+    margin-top: 1rem; margin-bottom: 2.5rem; z-index: 2;
+    min-height: 2.2em;
+    display: block;
+  }
+  .tag-at   { color: var(--cyan); }
+  .tag-home { color: var(--white); }
+  .tag-work { color: var(--white); }
+  .tag-play { color: var(--gold);  }
+  .tag-pipe { color: rgba(0,229,255,.3); margin: 0 .2em; }
+  .tag-caret {
+    display: inline-block; width: 2px; height: 1em;
+    background: var(--cyan); margin-left: 1px;
+    vertical-align: middle;
+    animation: blink .65s step-end infinite;
+  }
+
+  .hero-statement {
+    font-size: clamp(.95rem, 1.5vw, 1.15rem); line-height: 1.85;
+    color: rgba(240,240,245,.7); max-width: 680px; margin: 0 auto 3rem; z-index: 2;
+  }
+  .hero-statement strong { color: var(--white); }
+
+  .hero-pills { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; z-index: 2; }
+  .pill {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+    padding: .4rem 1rem; border-radius: 2px;
+  }
+  .pill-cyan  { background: rgba(0,229,255,.07);   border: 1px solid rgba(0,229,255,.3);  color: var(--cyan); }
+  .pill-gold  { background: rgba(245,197,66,.07);  border: 1px solid rgba(245,197,66,.3); color: var(--gold); }
+  .pill-white { background: rgba(240,240,245,.05); border: 1px solid rgba(240,240,245,.2); color: var(--white); }
+
+  /* ══════════════════════════════════════
+     THE CONCEPT — DUAL PRESENTER
+  ══════════════════════════════════════ */
+  .dual-section {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem; position: relative; overflow: hidden;
+  }
+  .dual-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(0,229,255,.04) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .concept-label {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em;
+    color: var(--cyan); text-transform: uppercase; text-align: center;
+    margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: .8rem;
+  }
+  .concept-label::before, .concept-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--cyan); }
+
+  .concept-headline {
+    font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: .03em; line-height: 1; text-align: center;
+    margin-bottom: .8rem;
+  }
+  .concept-headline em { color: var(--cyan); font-style: normal; }
+
+  .concept-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem); color: var(--gold);
+    text-align: center; margin-bottom: 4rem;
+  }
+
+  /* ── SPLIT STAGE ── */
+  .split-stage {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 0;
+    max-width: 1000px; margin: 0 auto;
+    position: relative;
+  }
+
+  /* presenter pods */
+  .presenter-pod {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+
+  /* ── HUMAN SIDE ── */
+  .presenter-pod.human { padding-bottom: 0; }
+
+  .pod-label {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .pod-label .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .pod-label.human-label { color: var(--gold); }
+  .pod-label.human-label .dot { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+  .pod-label.avatar-label { color: var(--cyan); }
+  .pod-label.avatar-label .dot { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: blink 1.2s ease-in-out infinite; }
+
+  /* human photo placeholder */
+  .human-frame {
+    width: 220px; height: 420px;
+    border-radius: 110px 110px 40px 40px;
+    border: 1px solid rgba(245,197,66,.35);
+    background: var(--surface);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    box-shadow: 0 0 40px rgba(245,197,66,.12), 0 0 80px rgba(245,197,66,.05);
+  }
+  .human-frame::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(245,197,66,.04) 0%, transparent 40%, rgba(0,0,20,.35) 100%);
+    pointer-events: none;
+  }
+  .human-placeholder-icon {
+    font-size: 3rem; opacity: .3; margin-bottom: 1rem;
+  }
+  .human-placeholder-text {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em;
+    color: rgba(245,197,66,.4); text-transform: uppercase; text-align: center; line-height: 1.8; padding: 0 1rem;
+  }
+
+  /* glow platform */
+  .pod-platform {
+    width: 200px; height: 20px; margin-top: -4px; border-radius: 50%;
+    filter: blur(12px);
+  }
+  .pod-platform.gold-glow { background: rgba(245,197,66,.4); }
+  .pod-platform.cyan-glow { background: rgba(0,229,255,.5); }
+
+  /* pod name + role */
+  .pod-name {
+    font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .08em;
+    margin-top: 1.5rem; margin-bottom: .3rem;
+  }
+  .pod-role {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .2em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .human .pod-name { color: var(--gold); }
+  .avatar-pod .pod-name { color: var(--cyan); }
+
+  /* ── MIDDLE DIVIDER ── */
+  .split-divider {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0 2rem; padding-bottom: 80px;
+    gap: 1rem; position: relative; z-index: 10;
+  }
+  .vs-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.15);
+    background: var(--black);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .05em; color: var(--white);
+    position: relative;
+  }
+  .vs-circle::before {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid rgba(0,229,255,.2);
+    animation: spinSlow 8s linear infinite;
+  }
+  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .divider-line {
+    width: 1px; height: 80px;
+    background: linear-gradient(180deg, transparent, rgba(0,229,255,.3), transparent);
+  }
+  .divider-plus {
+    font-family: var(--font-display); font-size: 1rem; color: rgba(0,229,255,.4);
+    letter-spacing: .1em;
+  }
+
+  /* ── AVATAR SIDE ── */
+  .avatar-frame {
+    width: 220px; height: 420px;
+    border-radius: 110px 110px 40px 40px;
+    border: 1px solid rgba(0,229,255,.3);
+    background: var(--surface);
+    display: flex; align-items: flex-end; justify-content: center;
+    position: relative; overflow: visible;
+    box-shadow: 0 0 40px rgba(0,229,255,.18), 0 0 80px rgba(0,229,255,.07);
+  }
+  .avatar-frame video {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+  }
+  .avatar-frame::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,229,255,.06) 0%, transparent 40%, rgba(0,0,20,.3) 100%);
+    pointer-events: none;
+  }
+  .video-mute-btn {
+    position: absolute; bottom: -12px; right: -12px; z-index: 10;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(0,0,0,.75); font-size: 1.3rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s, border-color .25s, box-shadow .25s;
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    line-height: 1; padding: 0;
+  }
+
+  .video-mute-btn.cyan   { border: 2px solid rgba(0,229,255,.35);   color: var(--cyan);  box-shadow: 0 0 12px rgba(0,229,255,.4); }
+  .video-mute-btn.cyan:hover   { background: rgba(0,229,255,.15);   border-color: var(--cyan); }
+  .video-mute-btn.red    { border: 2px solid rgba(255,45,85,.35);   color: var(--red);   box-shadow: 0 0 12px rgba(255,45,85,.4); }
+  .video-mute-btn.red:hover    { background: rgba(255,45,85,.15);   border-color: var(--red); }
+  .video-mute-btn.green  { border: 2px solid rgba(0,255,163,.35);   color: #00ffa3;      box-shadow: 0 0 12px rgba(0,255,163,.4); }
+  .video-mute-btn.green:hover  { background: rgba(0,255,163,.15);   border-color: #00ffa3; }
+  .video-mute-btn.purple { border: 2px solid rgba(180,74,255,.35);  color: #b44aff;      box-shadow: 0 0 12px rgba(180,74,255,.4); }
+  .video-mute-btn.purple:hover { background: rgba(180,74,255,.15);  border-color: #b44aff; }
+
+  /* orbit ring on avatar */
+  .orbit-wrap {
+    position: absolute; inset: -40px; pointer-events: none;
+  }
+  .orbit-ring {
+    width: 100%; height: 100%; border-radius: 50%;
+    border: 1px solid rgba(0,229,255,.1);
+    animation: spin 20s linear infinite;
+    position: relative;
+  }
+  .orbit-ring::after {
+    content: ''; position: absolute; top: -4px; left: 50%;
+    width: 8px; height: 8px; background: var(--cyan); border-radius: 50%;
+    box-shadow: 0 0 12px var(--cyan); transform: translateX(-50%);
+  }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── CONCEPT STATEMENT BELOW STAGE ── */
+  .concept-statement {
+    max-width: 800px; margin: 4rem auto 0; text-align: center;
+    background: rgba(0,229,255,.03); border: 1px solid rgba(0,229,255,.1);
+    padding: 2.5rem 3rem; position: relative;
+  }
+  .concept-statement::before {
+    content: '"'; position: absolute; top: -.5rem; left: 1.5rem;
+    font-family: var(--font-serif); font-size: 4rem; color: rgba(0,229,255,.15); line-height: 1;
+  }
+  .concept-statement p {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.9;
+    color: rgba(240,240,245,.85);
+  }
+  .concept-statement p strong { color: var(--cyan); font-style: normal; }
+  .concept-statement p .gold-text { color: var(--gold); font-style: normal; }
+  .concept-attribution {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em;
+    color: var(--muted); text-transform: uppercase; margin-top: 1.5rem;
+  }
+
+  /* ── WHY THIS WORKS ── */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    background: rgba(0,229,255,.05); border: 1px solid rgba(0,229,255,.1);
+    margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto;
+  }
+  .why-card { background: var(--black); padding: 2rem 1.8rem; }
+  .why-number { font-family: var(--font-display); font-size: 3.5rem; line-height: 1; color: rgba(240,240,245,.25); margin-bottom: .5rem; }
+  .why-title { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .05em; color: var(--cyan); margin-bottom: .7rem; }
+  .why-text { font-size: .82rem; line-height: 1.7; color: var(--white); }
+
+  /* ══════════════════════════════════════
+     DIVIDER / COMMONS
+  ══════════════════════════════════════ */
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,229,255,.3), transparent); }
+
+  section { padding: 5rem 4rem; position: relative; }
+  .section-label { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em; color: var(--cyan); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .8rem; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--cyan); }
+  .section-title { font-family: var(--font-display); font-size: clamp(2.5rem,5vw,4rem); letter-spacing: .03em; line-height: 1; margin-bottom: 1rem; }
+  .section-title em { color: var(--cyan); font-style: normal; }
+
+  /* ══════════════════════════════════════
+     COUNTER CLOCK
+  ══════════════════════════════════════ */
+  .counter-section { background: var(--black); padding: 6rem 4rem; position: relative; overflow: hidden; }
+  .counter-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(0,229,255,.04) 0%, transparent 70%); pointer-events: none; }
+
+  .counter-header { text-align: center; margin-bottom: 1rem; }
+  .counter-header .section-label { justify-content: center; }
+
+  .counter-subtitle { text-align: center; font-family: var(--font-mono); font-size: .72rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1rem; }
+
+  .live-bar { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3.5rem; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 10px var(--red); animation: blink .8s ease-in-out infinite; }
+  .live-label { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .25em; color: var(--red); text-transform: uppercase; }
+  .clock-display { font-family: var(--font-mono); font-size: .75rem; color: rgba(0,229,255,.6); letter-spacing: .1em; }
+
+  .counters-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(0,229,255,.06); border: 1px solid rgba(0,229,255,.1); margin-bottom: 2px; }
+  .counters-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; background: rgba(0,229,255,.06); border: 1px solid rgba(0,229,255,.1); border-top: none; }
+
+  .counter-card { background: var(--deep); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; transition: background .3s; }
+  .counter-card:hover { background: #111122; }
+  .counter-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .counter-card.cyan-card::before   { background: linear-gradient(90deg, var(--cyan), transparent); }
+  .counter-card.gold-card::before   { background: linear-gradient(90deg, var(--gold), transparent); }
+  .counter-card.red-card::before    { background: linear-gradient(90deg, var(--red), transparent); }
+  .counter-card.green-card::before  { background: linear-gradient(90deg, #00ff9d, transparent); }
+  .counter-card.purple-card::before { background: linear-gradient(90deg, #b44aff, transparent); }
+  .counter-card.white-card::before  { background: linear-gradient(90deg, var(--white), transparent); }
+  .counter-card::after { content: attr(data-bg); position: absolute; top: .5rem; right: 1rem; font-family: var(--font-display); font-size: 6rem; line-height: 1; color: rgba(255,255,255,.02); pointer-events: none; user-select: none; }
+
+  .counter-topic { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: .8rem; }
+  .counter-number { font-family: var(--font-display); font-size: clamp(2.4rem,3.5vw,3.8rem); line-height: 1; letter-spacing: .02em; margin-bottom: .5rem; }
+  .counter-card.cyan-card   .counter-number { color: var(--cyan); }
+  .counter-card.gold-card   .counter-number { color: var(--gold); }
+  .counter-card.red-card    .counter-number { color: var(--red); }
+  .counter-card.green-card  .counter-number { color: #00ff9d; }
+  .counter-card.purple-card .counter-number { color: #b44aff; }
+  .counter-card.white-card  .counter-number { color: var(--white); }
+  .counter-unit  { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; }
+  .counter-label { font-size: .82rem; line-height: 1.6; color: rgba(240,240,245,.65); }
+  .counter-source { margin-top: .8rem; font-family: var(--font-mono); font-size: .55rem; color: rgba(122,122,153,.5); letter-spacing: .1em; }
+
+  .ticker-strip { background: rgba(0,229,255,.05); border: 1px solid rgba(0,229,255,.1); border-top: none; padding: 1rem 0; overflow: hidden; }
+  .ticker-inner { display: flex; gap: 3rem; animation: tickerMove 28s linear infinite; white-space: nowrap; width: max-content; }
+  .ticker-inner span { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em; color: var(--muted); text-transform: uppercase; }
+  .ticker-inner .hot  { color: var(--cyan); }
+  .ticker-inner .warm { color: var(--gold); }
+  @keyframes tickerMove { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ══ SHOWS / ROADMAP / VALUE ══ */
+  .comp-shows { background: var(--deep); }
+  .comp-intro { font-size: 1.05rem; line-height: 1.8; color: rgba(240,240,245,.75); max-width: 680px; margin-bottom: 3.5rem; }
+  .shows-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5px; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.12); }
+  .show-card { background: var(--surface); padding: 2rem; position: relative; transition: background .3s; }
+  .show-card:hover { background: rgba(0,229,255,.04); }
+  .show-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--cyan); transform: scaleY(0); transform-origin: top; transition: transform .3s; }
+  .show-card:hover::before { transform: scaleY(1); }
+  .show-card.platform-compare { border-left: 3px solid var(--gold); }
+  .show-card.platform-compare::before { background: var(--gold); }
+  .show-card.platform-compare:hover { background: rgba(245,197,66,.04); }
+  .show-network { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: .6rem; }
+  .show-name { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .05em; margin-bottom: .8rem; }
+  .show-desc { font-size: .85rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem; }
+  .show-relevance { font-size: .78rem; line-height: 1.6; color: rgba(0,229,255,.8); border-top: 1px solid rgba(0,229,255,.12); padding-top: 1rem; }
+  .show-relevance strong { color: var(--cyan); }
+
+  .roadmap { background: var(--black); }
+  .phase-block { margin-bottom: 4rem; }
+  .phase-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+  .phase-number { font-family: var(--font-display); font-size: 4rem; line-height: 1; color: rgba(0,229,255,.12); }
+  .phase-info .phase-label { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .25em; color: var(--cyan); text-transform: uppercase; margin-bottom: .3rem; }
+  .phase-info .phase-name  { font-family: var(--font-display); font-size: 1.8rem; letter-spacing: .05em; }
+  .phase-info .phase-theme { font-size: .8rem; color: var(--muted); }
+  .episodes-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 1px; background: rgba(255,255,255,.04); }
+  .ep-card { background: var(--surface); padding: 1.5rem; transition: all .3s; opacity: 0; transform: translateY(20px); }
+  .ep-card:hover { transform: translateY(-3px) !important; }
+  .ep-num   { font-family: var(--font-mono); font-size: .6rem; color: var(--muted); letter-spacing: .15em; margin-bottom: .6rem; }
+  .ep-title { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .05em; margin-bottom: .6rem; line-height: 1.2; }
+  .ep-desc  { font-size: .78rem; line-height: 1.6; color: var(--muted); margin-bottom: .8rem; }
+  .ep-qr    { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .1em; }
+  .ep-qr::before { content: '◻ '; }
+  .phase-1 .ep-title { color: #e0aaff; } .phase-1 .ep-qr { color: #e0aaff; }
+  .phase-2 .ep-title { color: #00ffa3; } .phase-2 .ep-qr { color: #00ffa3; }
+  .phase-3 .ep-title { color: var(--gold); } .phase-3 .ep-qr { color: var(--gold); }
+
+  /* EP05 gold pill links */
+  .ep-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+  .ep-pill-gold {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+    color: var(--gold); border: 1px solid rgba(245,197,66,.3); background: rgba(245,197,66,.07);
+    padding: .35rem .9rem; border-radius: 999px; transition: background .25s;
+  }
+  .ep-pill-gold:hover { background: rgba(245,197,66,.18); }
+  .ep-pill-red {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+    color: var(--red); border: 1px solid rgba(255,45,85,.3); background: rgba(255,45,85,.07);
+    padding: .35rem .9rem; border-radius: 999px; transition: background .25s;
+  }
+  .ep-pill-red:hover { background: rgba(255,45,85,.1); }
+
+  /* EP05 impact stat bar */
+  .ep-stat-bar {
+    display: flex; gap: 1.2rem; margin-top: .8rem; padding: .6rem .8rem;
+    background: rgba(245,197,66,.04); border: 1px solid rgba(245,197,66,.12); border-radius: 4px;
+    text-decoration: none; transition: background .25s;
+  }
+  .ep-stat-bar:hover { background: rgba(245,197,66,.08); }
+  .ep-stat-block { text-align: center; }
+  .ep-stat-num { font-family: 'Bebas Neue', var(--font-display); font-size: 1.6rem; color: var(--cyan); line-height: 1.2; }
+  .ep-stat-label { font-family: var(--font-mono); font-size: .52rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+
+  .value-prop { background: linear-gradient(135deg, var(--deep) 0%, var(--black) 100%); border-top: 1px solid rgba(245,197,66,.2); border-bottom: 1px solid rgba(245,197,66,.2); }
+  .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2px; background: rgba(245,197,66,.06); margin-top: 3rem; border: 1px solid rgba(245,197,66,.15); }
+  .value-card { background: var(--black); padding: 2.5rem 2rem; transition: background .3s; }
+  .value-card:hover { background: rgba(245,197,66,.04); }
+  .value-icon  { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+  .value-label { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .05em; color: var(--gold); margin-bottom: .6rem; }
+  .value-text  { font-size: .82rem; line-height: 1.7; color: var(--muted); }
+
+  /* ── CTV PROPOSITION ── */
+  #ctv-proposition { background: var(--deep); border-top: 1px solid rgba(245,197,66,.2); padding: 6rem 4rem; }
+  .ctv-tagline { font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: var(--muted); max-width: 700px; margin-top: 1.2rem; line-height: 1.8; }
+  .ctv-alert { background: rgba(245,197,66,.08); border: 1px solid rgba(245,197,66,.25); padding: 1.4rem 2rem; margin: 3rem 0; font-size: .88rem; line-height: 1.7; color: var(--gold); font-family: var(--font-body); }
+  .ctv-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: rgba(245,197,66,.06); border: 1px solid rgba(245,197,66,.15); margin-bottom: 4rem; }
+  .ctv-stat-card { background: var(--black); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; transition: background .3s; }
+  .ctv-stat-card:hover { background: rgba(245,197,66,.03); }
+  .ctv-stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+  .ctv-stat-number { font-family: var(--font-display); font-size: clamp(2.4rem,3.5vw,3.8rem); line-height: 1; color: var(--gold); margin-bottom: .5rem; }
+  .ctv-stat-label { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; }
+  .ctv-stat-sub { font-size: .82rem; line-height: 1.6; color: rgba(240,240,245,.6); }
+  .ctv-video-label { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .ctv-video-wrap { position: relative; max-width: 900px; margin: 0 auto 4rem; border: 1px solid rgba(245,197,66,.3); background: var(--black); overflow: visible; box-shadow: 0 0 40px rgba(245,197,66,.1), 0 0 80px rgba(245,197,66,.04); }
+  .ctv-video-wrap video { width: 100%; display: block; }
+  .ctv-video-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245,197,66,.05) 0%, transparent 35%, rgba(0,0,20,.35) 100%); pointer-events: none; }
+  .ctv-video-caption { padding: .85rem 1.2rem; background: rgba(245,197,66,.06); border-top: 1px solid rgba(245,197,66,.2); font-family: var(--font-mono); font-size: .58rem; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: .6rem; }
+  .ctv-video-caption::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 6px var(--gold); animation: blink .9s ease-in-out infinite; flex-shrink: 0; }
+  .video-mute-btn.gold  { border: 2px solid rgba(245,197,66,.35); color: var(--gold); box-shadow: 0 0 12px rgba(245,197,66,.4); }
+  .video-mute-btn.gold:hover  { background: rgba(245,197,66,.15); border-color: var(--gold); }
+  .ctv-flow-title { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 2.5rem; }
+  .ctv-flow { display: flex; align-items: flex-start; gap: 0; margin-bottom: 3rem; }
+  .ctv-step { flex: 1; text-align: center; position: relative; }
+  .ctv-step-icon { font-size: 2rem; margin-bottom: .8rem; display: block; }
+  .ctv-step-text { font-size: .8rem; line-height: 1.6; color: rgba(240,240,245,.7); padding: 0 .8rem; }
+  .ctv-step-num { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); margin-bottom: .4rem; }
+  .ctv-arrow { display: flex; align-items: center; padding-top: 1.2rem; color: rgba(245,197,66,.35); font-size: 1.2rem; flex-shrink: 0; }
+  .ctv-closing { border: 1px solid rgba(245,197,66,.25); padding: 1.8rem 2.5rem; font-family: var(--font-body); font-size: 1rem; line-height: 1.8; color: rgba(240,240,245,.8); text-align: center; }
+  .ctv-closing strong { color: var(--gold); }
+
+  @media(max-width:900px) {
+    .ctv-stats-grid { grid-template-columns: 1fr 1fr; }
+    .ctv-flow { flex-wrap: wrap; gap: 1.5rem; }
+    .ctv-arrow { display: none; }
+    .ctv-step { min-width: 140px; }
+    #ctv-proposition { padding: 4rem 2rem; }
+  }
+  @media(max-width:560px) {
+    .ctv-stats-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── CONTACT CTA ── */
+  .contact-cta { background: var(--deep); border-top: 1px solid rgba(0,229,255,.15); padding: 5rem 4rem; text-align: center; }
+  .contact-cta-btn {
+    display: inline-block; font-family: var(--font-display); font-size: 1.4rem;
+    letter-spacing: .12em; color: var(--black); background: var(--cyan);
+    padding: .9rem 2.8rem; text-decoration: none; transition: all .3s;
+    border: 2px solid var(--cyan);
+  }
+  .contact-cta-btn:hover { background: transparent; color: var(--cyan); }
+  .contact-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .contact-links a {
+    font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em;
+    text-transform: uppercase; text-decoration: none; transition: opacity .3s;
+  }
+  .contact-links a:hover { opacity: .7; }
+  .contact-links a.cyan-link { color: var(--cyan); }
+  .contact-links a.gold-link { color: var(--gold); }
+  .contact-disclaimer {
+    font-size: .75rem; line-height: 1.7; color: var(--muted);
+    max-width: 600px; margin: 2rem auto 0;
+  }
+
+  /* ── FOOTER ── */
+  footer { background: var(--deep); border-top: 1px solid rgba(0,229,255,.1); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: .1em; color: var(--cyan); }
+  .footer-logos { display: flex; align-items: center; gap: 1.5rem; }
+  .footer-credits { font-size: .78rem; color: var(--muted); line-height: 1.7; text-align: right; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ══════════════════════════════════════
+     EP07 SPOTLIGHT — MOTHER TONGUES
+  ══════════════════════════════════════ */
+  .spotlight-section {
+    background: var(--black);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* animated gradient wash behind */
+  .spotlight-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(0,255,163,.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(0,229,255,.04) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* big EP watermark */
+  .spotlight-section::after {
+    content: 'EP 07';
+    position: absolute; top: 3rem; right: 3rem;
+    font-family: var(--font-display); font-size: 8rem; line-height: 1;
+    color: rgba(0,255,163,.04); pointer-events: none; user-select: none;
+  }
+
+  /* policy alert banner */
+  .policy-banner {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: rgba(0,255,163,.06);
+    border: 1px solid rgba(0,255,163,.25);
+    border-left: 4px solid #00ffa3;
+    padding: 1rem 1.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+  }
+  .policy-banner-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .policy-banner-text { font-size: .85rem; line-height: 1.7; color: rgba(240,240,245,.8); }
+  .policy-banner-text strong { color: #00ffa3; }
+  .policy-banner-text a { color: #00ffa3; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* headline */
+  .spotlight-kicker {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em;
+    color: #00ffa3; text-transform: uppercase;
+    display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem;
+  }
+  .spotlight-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: #00ffa3; }
+
+  .spotlight-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: .95; letter-spacing: .02em;
+    color: var(--white); margin-bottom: .6rem;
+  }
+  .spotlight-title em { color: #00ffa3; font-style: normal; display: block; }
+
+  .spotlight-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.25rem; color: var(--gold); margin-bottom: 3.5rem;
+  }
+
+  /* two-column layout */
+  .spotlight-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  /* LEFT — the problem + policy */
+  .spotlight-left {}
+
+  .spotlight-problem {
+    font-size: 1rem; line-height: 1.85;
+    color: rgba(240,240,245,.75);
+    margin-bottom: 2.5rem;
+  }
+  .spotlight-problem strong { color: var(--white); }
+  .spotlight-problem .hl { color: #00ffa3; }
+
+  /* phoneme table */
+  .phoneme-block {
+    background: var(--surface);
+    border: 1px solid rgba(0,255,163,.2);
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .phoneme-block-title {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em;
+    color: #00ffa3; text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .phoneme-table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+  .phoneme-table th {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .15em;
+    color: var(--muted); text-transform: uppercase; text-align: left;
+    padding: .4rem .6rem; border-bottom: 1px solid rgba(0,255,163,.1);
+  }
+  .phoneme-table td {
+    padding: .45rem .6rem; color: rgba(240,240,245,.8);
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em;
+  }
+  .phoneme-table td:first-child { color: #00ffa3; font-weight: 700; font-size: .85rem; }
+  .phoneme-table tr:last-child td { border-bottom: none; }
+
+  /* RIGHT — the solution cards */
+  .spotlight-right {}
+
+  /* Voice Lab call-out */
+  .voicelab-card {
+    background: linear-gradient(135deg, rgba(0,255,163,.06) 0%, rgba(0,229,255,.04) 100%);
+    border: 1px solid rgba(0,255,163,.3);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .voicelab-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(0,255,163,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .voicelab-logo-line {
+    font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .1em;
+    color: #00ffa3; margin-bottom: .3rem;
+  }
+  .voicelab-sub {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .15em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .voicelab-desc {
+    font-size: .85rem; line-height: 1.75;
+    color: rgba(240,240,245,.75); margin-bottom: 1.5rem;
+  }
+  .voicelab-desc strong { color: var(--white); }
+
+  /* stat pills inside voicelab card */
+  .vl-stats { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 1.5rem; }
+  .vl-stat {
+    background: rgba(0,255,163,.08); border: 1px solid rgba(0,255,163,.2);
+    padding: .4rem .9rem; border-radius: 2px;
+    font-family: var(--font-mono); font-size: .62rem;
+    color: #00ffa3; letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  .voicelab-link {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(0,255,163,.1); border: 1px solid rgba(0,255,163,.4);
+    color: #00ffa3; font-family: var(--font-mono); font-size: .65rem;
+    letter-spacing: .15em; text-transform: uppercase; text-decoration: none;
+    padding: .6rem 1.2rem; border-radius: 2px;
+    transition: background .25s;
+  }
+  .voicelab-link:hover { background: rgba(0,255,163,.18); }
+  .voicelab-link::after { content: ' →'; }
+
+  /* TTS comparison */
+  .tts-compare {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,.07);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .tts-compare-title {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .tts-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .tts-row:last-child { border-bottom: none; }
+  .tts-engine { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); min-width: 100px; }
+  .tts-output { font-size: .85rem; color: var(--white); flex: 1; }
+  .tts-result {
+    font-family: var(--font-mono); font-size: .65rem; padding: .2rem .6rem; border-radius: 2px;
+    font-weight: 700; letter-spacing: .1em; white-space: nowrap;
+  }
+  .tts-result.fail { background: rgba(255,45,85,.12); color: var(--red); border: 1px solid rgba(255,45,85,.25); }
+  .tts-result.pass { background: rgba(0,255,163,.1); color: #00ffa3; border: 1px solid rgba(0,255,163,.3); }
+
+  /* HelloTutor callout */
+  .hellotutor-pill {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(0,229,255,.05); border: 1px solid rgba(0,229,255,.2);
+    padding: 1.2rem 1.5rem;
+  }
+  .ht-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .ht-text { font-size: .8rem; line-height: 1.65; color: rgba(240,240,245,.7); }
+  .ht-text strong { color: var(--cyan); }
+  .ht-text a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* episode CTA strip */
+  .ep-cta-strip {
+    margin-top: 3.5rem;
+    display: flex; align-items: stretch; gap: 2px;
+    background: rgba(0,255,163,.06);
+    border: 1px solid rgba(0,255,163,.15);
+    max-width: 1100px;
+  }
+  .cta-block { flex: 1; background: var(--deep); padding: 1.8rem; }
+  .cta-block-label { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em; color: #00ffa3; text-transform: uppercase; margin-bottom: .6rem; }
+  .cta-block-text { font-size: .85rem; line-height: 1.7; color: var(--muted); }
+  .cta-block-text strong { color: var(--white); }
+
+  /* ── RUN OF SHOW TIMELINE ── */
+  .ros-block {
+    max-width: 1000px; margin: 3.5rem auto 0;
+  }
+  .ros-label {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .2em;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: 2rem; text-align: center;
+  }
+  .ros-track {
+    position: relative;
+    padding-left: 2rem;
+  }
+  /* vertical spine */
+  .ros-track::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(180deg, var(--cyan), rgba(0,229,255,.15));
+  }
+  .ros-item {
+    display: grid;
+    grid-template-columns: 60px 80px 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.2rem 0 1.2rem 1.5rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    transition: background .25s;
+  }
+  .ros-item:last-child { border-bottom: none; }
+  .ros-item:hover { background: rgba(255,255,255,.02); }
+
+  /* dot on spine */
+  .ros-marker {
+    position: absolute; left: -2.45rem; top: 1.5rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1px solid;
+  }
+  .ros-axis .ros-marker  { background: rgba(0,229,255,.2); border-color: var(--cyan); box-shadow: 0 0 8px rgba(0,229,255,.4); }
+  .ros-human .ros-marker { background: rgba(245,197,66,.15); border-color: var(--gold); }
+
+  .ros-time {
+    font-family: var(--font-mono); font-size: .7rem;
+    color: var(--muted); letter-spacing: .08em; padding-top: .15rem;
+  }
+  .ros-tag {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em;
+    text-transform: uppercase; padding: .25rem .7rem; border-radius: 2px;
+    display: inline-block; align-self: start;
+  }
+  .axis-tag  { background: rgba(0,229,255,.1);  border: 1px solid rgba(0,229,255,.3);  color: var(--cyan); }
+  .human-tag { background: rgba(245,197,66,.08); border: 1px solid rgba(245,197,66,.3); color: var(--gold); }
+
+  .ros-desc {
+    font-size: .82rem; line-height: 1.7; color: rgba(240,240,245,.65);
+    grid-column: 3; padding-top: .05rem;
+  }
+
+  /* ══════════════════════════════════════
+     EP11 SPOTLIGHT — IMMERSIVE ART & QR
+  ══════════════════════════════════════ */
+  .immersive-section {
+    background: var(--deep);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .immersive-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 60%, rgba(180,74,255,.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 40%, rgba(245,197,66,.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .immersive-section::after {
+    content: 'EP 11';
+    position: absolute; top: 3rem; right: 3rem;
+    font-family: var(--font-display); font-size: 8rem; line-height: 1;
+    color: rgba(180,74,255,.04); pointer-events: none; user-select: none;
+  }
+
+  /* ══════════════════════════════════════
+     EP10 SPOTLIGHT — THE SOUND OF AURAA
+  ══════════════════════════════════════ */
+  .auraa-section {
+    background: var(--black);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .auraa-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(245,197,66,.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(255,149,0,.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .auraa-section::after {
+    content: 'EP 10';
+    position: absolute; top: 3rem; right: 3rem;
+    font-family: var(--font-display); font-size: 8rem; line-height: 1;
+    color: rgba(245,197,66,.04); pointer-events: none; user-select: none;
+  }
+  .auraa-kicker {
+    font-family: var(--font-mono); font-size: .68rem; letter-spacing: .25em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .auraa-title {
+    font-family: var(--font-display); font-size: clamp(3rem,7vw,5.5rem);
+    letter-spacing: .04em; line-height: .95; margin-bottom: 1.5rem;
+  }
+  .auraa-title em { color: var(--gold); font-style: normal; }
+  .auraa-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.05rem; line-height: 1.8; color: var(--muted);
+    max-width: 680px; margin-bottom: 3rem;
+  }
+  .auraa-alert {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: rgba(255,149,0,.06);
+    border: 1px solid rgba(245,197,66,.25);
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+  }
+  .auraa-alert-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .auraa-alert-text { font-size: .85rem; line-height: 1.7; color: rgba(240,240,245,.8); }
+  .auraa-alert-text strong { color: var(--gold); }
+  .auraa-body {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start; max-width: 1100px;
+  }
+  .auraa-intro {
+    font-size: .95rem; line-height: 1.85; color: rgba(240,240,245,.72);
+    margin-bottom: 2rem;
+  }
+  .auraa-intro strong { color: var(--gold); }
+  .auraa-fact {
+    display: flex; gap: 1.2rem; padding: 1.2rem 0;
+    border-left: 3px solid var(--gold); padding-left: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .auraa-fact-num {
+    font-family: var(--font-display); font-size: 1.8rem; line-height: 1;
+    color: var(--gold); flex-shrink: 0; min-width: 4rem;
+  }
+  .auraa-fact-text { font-size: .82rem; line-height: 1.65; color: var(--muted); }
+  .auraa-right-title {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .2em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .auraa-point {
+    display: flex; gap: 1rem; margin-bottom: 1.4rem;
+  }
+  .auraa-point-num {
+    font-family: var(--font-display); font-size: 1.6rem; line-height: 1;
+    color: var(--gold); flex-shrink: 0; min-width: 2rem;
+  }
+  .auraa-point-text { font-size: .85rem; line-height: 1.7; color: rgba(240,240,245,.72); }
+  .auraa-cta-strip {
+    display: flex; gap: 2px; background: rgba(245,197,66,.08);
+    border: 1px solid rgba(245,197,66,.15);
+    margin-top: 4rem; max-width: 1100px;
+  }
+  .auraa-cta-block { flex: 1; background: var(--deep); padding: 1.8rem; }
+  .auraa-cta-label {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em;
+    text-transform: uppercase; margin-bottom: .6rem;
+  }
+  .auraa-cta-label.gold { color: var(--gold); }
+  .auraa-cta-label.amber { color: #ff9500; }
+  .auraa-cta-text { font-size: .85rem; line-height: 1.7; color: var(--muted); }
+  .auraa-cta-text strong { color: var(--white); }
+
+  @media(max-width:900px) {
+    .auraa-body { grid-template-columns: 1fr; }
+    .auraa-section { padding: 4rem 2rem; }
+    .auraa-cta-strip { flex-direction: column; }
+  }
+
+  /* meta insight banner */
+  .meta-banner {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: rgba(180,74,255,.06);
+    border: 1px solid rgba(180,74,255,.25);
+    border-left: 4px solid #b44aff;
+    padding: 1rem 1.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+  }
+  .meta-banner-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .meta-banner-text { font-size: .85rem; line-height: 1.7; color: rgba(240,240,245,.8); }
+  .meta-banner-text strong { color: #b44aff; }
+  .meta-banner-text .gold-hl { color: var(--gold); }
+
+  .immersive-kicker {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em;
+    color: #b44aff; text-transform: uppercase;
+    display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem;
+  }
+  .immersive-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: #b44aff; }
+
+  .immersive-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: .95; letter-spacing: .02em;
+    color: var(--white); margin-bottom: .6rem;
+  }
+  .immersive-title em { color: #b44aff; font-style: normal; display: block; }
+
+  .immersive-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.25rem; color: var(--gold); margin-bottom: 3.5rem;
+  }
+
+  /* body layout */
+  .immersive-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  /* ── LEFT: video + concept ── */
+  .immersive-video-wrap {
+    position: relative;
+    border: 1px solid rgba(180,74,255,.3);
+    background: var(--black);
+    overflow: visible;
+    box-shadow: 0 0 40px rgba(180,74,255,.12), 0 0 80px rgba(180,74,255,.05);
+  }
+  .immersive-video-wrap video {
+    width: 100%; display: block;
+  }
+  /* purple tint overlay */
+  .immersive-video-wrap::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(180,74,255,.08) 0%,
+      transparent 40%,
+      rgba(0,0,20,.4) 100%);
+    pointer-events: none;
+  }
+  .video-caption {
+    padding: .9rem 1.2rem;
+    background: rgba(180,74,255,.06);
+    border-top: 1px solid rgba(180,74,255,.2);
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em;
+    color: #b44aff; text-transform: uppercase;
+  }
+
+  /* use-case blocks below video */
+  .use-cases { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 2px; }
+
+  .use-case-card {
+    background: var(--surface);
+    border-left: 3px solid;
+    padding: 1.2rem 1.4rem;
+    transition: background .25s;
+  }
+  .use-case-card:hover { background: rgba(255,255,255,.03); }
+  .use-case-card.art   { border-color: #b44aff; }
+  .use-case-card.prop  { border-color: var(--gold); }
+  .use-case-card.pod   { border-color: var(--cyan); }
+
+  .use-case-icon { font-size: 1.2rem; margin-bottom: .5rem; display: block; }
+  .use-case-title {
+    font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .05em;
+    margin-bottom: .4rem;
+  }
+  .use-case-card.art  .use-case-title { color: #b44aff; }
+  .use-case-card.prop .use-case-title { color: var(--gold); }
+  .use-case-card.pod  .use-case-title { color: var(--cyan); }
+  .use-case-text { font-size: .8rem; line-height: 1.7; color: var(--muted); }
+
+  /* ── RIGHT: how it works + QR mechanism ── */
+  .immersive-right {}
+
+  .how-it-works {
+    background: var(--black);
+    border: 1px solid rgba(180,74,255,.2);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .how-title {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em;
+    color: #b44aff; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+
+  .how-steps { display: flex; flex-direction: column; gap: 0; }
+  .how-step {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .how-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .how-step-num {
+    font-family: var(--font-display); font-size: 2rem; line-height: 1;
+    color: rgba(180,74,255,.25); flex-shrink: 0; width: 2rem; text-align: center;
+  }
+  .how-step-content {}
+  .how-step-label {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em;
+    color: #b44aff; text-transform: uppercase; margin-bottom: .3rem;
+  }
+  .how-step-text { font-size: .82rem; line-height: 1.65; color: rgba(240,240,245,.7); }
+  .how-step-text strong { color: var(--white); }
+
+  /* QR meta loop */
+  .qr-meta-card {
+    background: linear-gradient(135deg, rgba(180,74,255,.05) 0%, rgba(245,197,66,.04) 100%);
+    border: 1px solid rgba(180,74,255,.25);
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .qr-meta-card::before {
+    content: '◻'; position: absolute; top: 1rem; right: 1.5rem;
+    font-size: 3.5rem; color: rgba(180,74,255,.08); pointer-events: none;
+  }
+  .qr-meta-title {
+    font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .05em;
+    color: #b44aff; margin-bottom: .5rem;
+  }
+  .qr-meta-text { font-size: .82rem; line-height: 1.75; color: rgba(240,240,245,.7); }
+  .qr-meta-text strong { color: var(--white); }
+  .qr-meta-text .gold-hl { color: var(--gold); }
+
+  /* outcomes strip */
+  .outcomes-strip {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 2px; background: rgba(180,74,255,.06);
+    border: 1px solid rgba(180,74,255,.15);
+  }
+  .outcome-block { background: var(--surface); padding: 1.2rem 1.4rem; }
+  .outcome-label {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .15em;
+    color: #b44aff; text-transform: uppercase; margin-bottom: .4rem;
+  }
+  .outcome-text { font-size: .78rem; line-height: 1.6; color: var(--muted); }
+
+  /* episode CTA - reuse existing .ep-cta-strip */
+
+  /* ── LIVE PROOF BLOCK ── */
+  .live-proof { max-width: 1100px; margin-top: 4rem; }
+  .live-proof-title {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .22em;
+    color: #b44aff; text-transform: uppercase; margin-bottom: 1.8rem;
+  }
+  .live-proof-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    background: rgba(180,74,255,.08); border: 1px solid rgba(180,74,255,.18);
+    margin-bottom: 2px;
+  }
+  .lp-card {
+    background: var(--black); padding: 2rem 1.8rem; border-left: 3px solid #b44aff;
+    display: flex; flex-direction: column;
+  }
+  .lp-card-label {
+    font-family: var(--font-mono); font-size: .52rem; letter-spacing: .2em;
+    color: rgba(180,74,255,.7); text-transform: uppercase; margin-bottom: .8rem;
+  }
+  .lp-card-title {
+    font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .04em;
+    color: var(--white); margin-bottom: .8rem;
+  }
+  .lp-card-text {
+    font-size: .8rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem;
+    flex: 1;
+  }
+  .lp-card-link {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .12em;
+    color: #b44aff; text-decoration: none; text-transform: uppercase;
+    transition: color .25s;
+  }
+  .lp-card-link:hover { color: #d48aff; }
+  .lp-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    background: rgba(180,74,255,.05); border: 1px solid rgba(180,74,255,.2);
+    border-top: none; padding: 1.2rem 2rem;
+  }
+  .lp-bar-text { font-size: .82rem; line-height: 1.65; color: rgba(240,240,245,.8); flex: 1; }
+  .lp-bar-link {
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .12em;
+    color: #b44aff; text-decoration: none; text-transform: uppercase;
+    white-space: nowrap; flex-shrink: 0; transition: color .25s;
+  }
+  .lp-bar-link:hover { color: #d48aff; }
+
+  @media(max-width:900px) {
+    .immersive-body { grid-template-columns: 1fr; }
+    .immersive-section { padding: 4rem 2rem; }
+    .outcomes-strip { grid-template-columns: 1fr; }
+    .live-proof-grid { grid-template-columns: 1fr; }
+    .lp-bar { flex-direction: column; text-align: center; }
+  }
+
+  /* ── SPOTLIGHT VIDEO (EP07) ── */
+  .spotlight-video-wrap {
+    position: relative;
+    border: 1px solid rgba(0,255,163,.3);
+    background: var(--black);
+    overflow: visible;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 40px rgba(0,255,163,.1), 0 0 80px rgba(0,255,163,.04);
+  }
+  .spotlight-video-wrap video {
+    width: 100%; display: block;
+  }
+  .spotlight-video-wrap::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0,255,163,.06) 0%,
+      transparent 35%,
+      rgba(0,0,20,.45) 100%);
+    pointer-events: none;
+  }
+  .spotlight-video-caption {
+    padding: .85rem 1.2rem;
+    background: rgba(0,255,163,.05);
+    border-top: 1px solid rgba(0,255,163,.18);
+    font-family: var(--font-mono); font-size: .58rem;
+    letter-spacing: .18em; color: #00ffa3; text-transform: uppercase;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .spotlight-video-caption::before {
+    content: ''; display: block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #00ffa3; box-shadow: 0 0 6px #00ffa3;
+    animation: blink .9s ease-in-out infinite; flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     EP02 SPOTLIGHT — THE DEEPFAKE MIRROR
+  ══════════════════════════════════════ */
+  .deepfake-section {
+    background: var(--black);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .deepfake-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 50%, rgba(255,45,85,.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 30%, rgba(255,45,85,.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .deepfake-section::after {
+    content: 'EP 02';
+    position: absolute; top: 3rem; right: 3rem;
+    font-family: var(--font-display); font-size: 8rem; line-height: 1;
+    color: rgba(255,45,85,.04); pointer-events: none; user-select: none;
+  }
+
+  /* threat banner */
+  .threat-banner {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: rgba(255,45,85,.06);
+    border: 1px solid rgba(255,45,85,.25);
+    border-left: 4px solid var(--red);
+    padding: 1rem 1.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    animation: threatPulse 3s ease-in-out infinite;
+  }
+  @keyframes threatPulse {
+    0%, 100% { border-left-color: var(--red); box-shadow: none; }
+    50% { border-left-color: var(--red); box-shadow: -2px 0 12px rgba(255,45,85,.2); }
+  }
+  .threat-banner-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .threat-banner-text { font-size: .85rem; line-height: 1.7; color: rgba(240,240,245,.8); }
+  .threat-banner-text strong { color: var(--red); }
+  .threat-banner-text .gold-hl { color: var(--gold); }
+
+  .deepfake-kicker {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em;
+    color: var(--red); text-transform: uppercase;
+    display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem;
+  }
+  .deepfake-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--red); }
+
+  .deepfake-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: .95; letter-spacing: .02em;
+    color: var(--white); margin-bottom: .6rem;
+  }
+  .deepfake-title em { color: var(--red); font-style: normal; display: block; }
+
+  .deepfake-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.25rem; color: rgba(240,240,245,.6); margin-bottom: 3.5rem;
+  }
+
+  /* body grid */
+  .deepfake-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  /* ── LEFT: video ── */
+  .deepfake-video-wrap {
+    position: relative;
+    border: 1px solid rgba(255,45,85,.3);
+    background: var(--black);
+    overflow: visible;
+    box-shadow: 0 0 40px rgba(255,45,85,.1), 0 0 80px rgba(255,45,85,.04);
+  }
+  .deepfake-video-wrap video { width: 100%; display: block; }
+  .deepfake-video-wrap::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(255,45,85,.07) 0%,
+      transparent 35%,
+      rgba(0,0,20,.5) 100%);
+    pointer-events: none;
+  }
+  /* red scan-line sweep effect */
+  .deepfake-video-wrap::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--red); opacity: .4;
+    animation: scanSweep 3s linear infinite; z-index: 2;
+    pointer-events: none;
+  }
+  @keyframes scanSweep {
+    0%   { top: 0%; opacity: .4; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .deepfake-caption {
+    padding: .85rem 1.2rem;
+    background: rgba(255,45,85,.06);
+    border-top: 1px solid rgba(255,45,85,.2);
+    font-family: var(--font-mono); font-size: .58rem;
+    letter-spacing: .18em; color: var(--red); text-transform: uppercase;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .deepfake-caption .rec-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 6px var(--red);
+    animation: blink .8s ease-in-out infinite; flex-shrink: 0;
+  }
+
+  /* fact stack below video */
+  .deepfake-facts { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 2px; }
+
+  .deepfake-fact {
+    background: var(--surface);
+    border-left: 3px solid rgba(255,45,85,.5);
+    padding: 1.1rem 1.4rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: background .25s;
+  }
+  .deepfake-fact:hover { background: rgba(255,45,85,.04); border-left-color: var(--red); }
+  .df-stat {
+    font-family: var(--font-display); font-size: 1.8rem; line-height: 1;
+    color: var(--red); flex-shrink: 0; min-width: 3.5rem;
+  }
+  .df-label { font-size: .8rem; line-height: 1.65; color: var(--muted); }
+  .df-label strong { color: rgba(240,240,245,.8); display: block; margin-bottom: .15rem; }
+
+  /* ── RIGHT: threat cards + what the show does ── */
+  .deepfake-right {}
+
+  /* WHAT A DEEPFAKE CAN DO */
+  .df-threat-block {
+    background: var(--surface);
+    border: 1px solid rgba(255,45,85,.2);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .df-threat-title {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .df-threat-list { display: flex; flex-direction: column; gap: 2px; }
+  .df-threat-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: .9rem 1rem; background: var(--black);
+    border-left: 2px solid rgba(255,45,85,.25);
+    font-size: .82rem; line-height: 1.6; color: rgba(240,240,245,.7);
+    transition: border-color .25s;
+  }
+  .df-threat-item:hover { border-left-color: var(--red); }
+  .df-threat-item .threat-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .df-threat-item strong { color: var(--white); }
+
+  /* WHAT THE EPISODE DOES */
+  .df-episode-block {
+    background: linear-gradient(135deg, rgba(255,45,85,.05) 0%, rgba(245,197,66,.04) 100%);
+    border: 1px solid rgba(255,45,85,.2);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .df-episode-block::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(255,45,85,.07) 0%, transparent 70%);
+  }
+  .df-episode-title {
+    font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .05em;
+    color: var(--red); margin-bottom: .6rem;
+  }
+  .df-episode-text { font-size: .82rem; line-height: 1.75; color: rgba(240,240,245,.7); }
+  .df-episode-text strong { color: var(--white); }
+  .df-episode-text .gold-hl { color: var(--gold); }
+
+  /* detection checklist */
+  .df-checklist { margin-top: 1.2rem; display: flex; flex-direction: column; gap: .5rem; }
+  .df-check {
+    display: flex; align-items: center; gap: .8rem;
+    font-family: var(--font-mono); font-size: .68rem;
+    letter-spacing: .08em; color: rgba(240,240,245,.7);
+  }
+  .df-check::before {
+    content: '◻'; color: var(--gold); font-size: .8rem; flex-shrink: 0;
+  }
+
+  @media(max-width:900px) {
+    .deepfake-body { grid-template-columns: 1fr; }
+    .deepfake-section { padding: 4rem 2rem; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    .spotlight-body { grid-template-columns: 1fr; }
+    .spotlight-section { padding: 4rem 2rem; }
+    .ep-cta-strip { flex-direction: column; }
+  }
+    .hero { padding: 6rem 2rem 4rem; }
+    .split-stage { grid-template-columns: 1fr; gap: 2rem; }
+    .split-divider { flex-direction: row; padding-bottom: 0; padding: 0 1rem; }
+    .divider-line { width: 60px; height: 1px; }
+    .human-frame, .avatar-frame { width: 180px; height: 340px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .counters-grid { grid-template-columns: 1fr 1fr; }
+    .counters-grid-2 { grid-template-columns: 1fr; }
+    section { padding: 4rem 2rem; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-credits { text-align: center; }
+    nav { padding: 1rem; }
+    .concept-statement { padding: 2rem; }
+    .dual-section { padding: 4rem 2rem; }
+  }
+  @media(max-width:560px) {
+    .counters-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: clamp(5rem,22vw,7rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HAIBO<span>.</span></div>
+  <div class="nav-right">
+    <div class="nav-tag">AFP Concept Pitch · SABC+ · 2025</div>
+    <img src="pluslogo_t.png" alt="SABC+" style="height:44px;vertical-align:middle;opacity:0.92;">
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-title-ghost">HAIBO</div>
+  <div class="hero-eyebrow">A Concept Pitch for SABC+</div>
+  <h1 class="hero-title">HAIBO<span class="bang">!</span></h1>
+  <p class="hero-sub" id="tagline-hero"><span class="tag-caret"></span></p>
+  <p class="hero-statement">
+    The technology making every South African say <strong>"Haibo!"</strong> is already in our pockets,
+    our homes, and our workplaces. This show demystifies it.
+    Democratises it. Turns confusion into competitive advantage.
+    And does it in a way no show has ever done before.
+  </p>
+  <div class="hero-pills">
+    <span class="pill pill-cyan">14 × 24 Min Episodes</span>
+    <span class="pill pill-cyan">Infotainment / Digital Literacy</span>
+    <span class="pill pill-gold">AFP Model</span>
+    <span class="pill pill-gold">CTV Strategy</span>
+    <span class="pill pill-white">In-Studio Format</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     THE CONCEPT — DUAL PRESENTER SECTION
+══════════════════════════════════════ -->
+<div class="dual-section">
+
+  <div class="concept-label reveal">The Format. The Concept. The Differentiator.</div>
+  <h2 class="concept-headline reveal">One Host. <em>One Show.</em> One Signature.</h2>
+  <p class="concept-tagline reveal">Irvan Damon presents. AXIS opens, closes, and drops in. The audience always knows who's who — and that clarity is the trust.</p>
+
+  <!-- SPLIT STAGE -->
+  <div class="split-stage reveal">
+
+    <!-- HUMAN — IRVAN DAMON -->
+    <div class="presenter-pod human">
+      <div class="pod-label human-label"><span class="dot"></span>The Host</div>
+      <div class="human-frame">
+        <img src="Host_FT.png" alt="Irvan Damon" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;">
+      </div>
+      <div class="pod-platform gold-glow"></div>
+      <div class="pod-name">IRVAN DAMON</div>
+      <div class="pod-role">Host · Creator · Authority</div>
+    </div>
+
+    <!-- CENTRE — FLOW INDICATOR -->
+    <div class="split-divider">
+      <div class="divider-line"></div>
+      <div class="vs-circle" style="font-size:.65rem; line-height:1.3; letter-spacing:.05em; color:var(--cyan); text-align:center;">AI<br>IN</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- AVATAR — AXIS -->
+    <div class="presenter-pod avatar-pod">
+      <div class="pod-label avatar-label"><span class="dot"></span>The Production Signature</div>
+      <div class="avatar-frame">
+        <div class="orbit-wrap"><div class="orbit-ring"></div></div>
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+          <source src="Avatar1.mp4" type="video/mp4">
+        </video>
+        <button class="video-mute-btn cyan" aria-label="Toggle sound" onclick="const v=this.previousElementSibling;v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
+      </div>
+      <div class="pod-platform cyan-glow"></div>
+      <div class="pod-name">AXIS</div>
+      <div class="pod-role">Opens · Tops · Tails · Drop-Ins</div>
+    </div>
+
+  </div>
+  <!-- END SPLIT STAGE -->
+
+  <!-- AXIS RUN-OF-SHOW TIMELINE -->
+  <div class="ros-block reveal">
+    <div class="ros-label">AXIS — Run of Show · 24-Minute Episode Structure</div>
+    <div class="ros-track">
+
+      <div class="ros-item ros-axis">
+        <div class="ros-marker"></div>
+        <div class="ros-time">0:00</div>
+        <div class="ros-tag axis-tag">AXIS</div>
+        <div class="ros-desc">Cold open. AXIS delivers the episode hook — a provocative stat, a deepfake clip, a burning question. Sets tone. Introduces topic.</div>
+      </div>
+
+      <div class="ros-item ros-human">
+        <div class="ros-marker"></div>
+        <div class="ros-time">1:30</div>
+        <div class="ros-tag human-tag">IRVAN</div>
+        <div class="ros-desc">Host takes over. Studio segment, interviews, explainers, demonstrations. Full authority. AXIS absent.</div>
+      </div>
+
+      <div class="ros-item ros-axis">
+        <div class="ros-marker"></div>
+        <div class="ros-time">10:00</div>
+        <div class="ros-tag axis-tag">AXIS</div>
+        <div class="ros-desc">Mid-show drop-in. Delivers a data point, triggers the on-screen QR code, frames the next segment. 30–45 seconds maximum.</div>
+      </div>
+
+      <div class="ros-item ros-human">
+        <div class="ros-marker"></div>
+        <div class="ros-time">11:00</div>
+        <div class="ros-tag human-tag">IRVAN</div>
+        <div class="ros-desc">Second act. Deep dive, guest segment, or live demonstration. The show's main content block.</div>
+      </div>
+
+      <div class="ros-item ros-axis">
+        <div class="ros-marker"></div>
+        <div class="ros-time">22:30</div>
+        <div class="ros-tag axis-tag">AXIS</div>
+        <div class="ros-desc">Tail. Signs off the episode with a forward tease and the show's closing QR activation. Branded, consistent, owned.</div>
+      </div>
+
+      <div class="ros-item ros-human">
+        <div class="ros-marker"></div>
+        <div class="ros-time">23:00</div>
+        <div class="ros-tag human-tag">IRVAN</div>
+        <div class="ros-desc">Final word. The human always closes. Warm, direct, personal. AXIS punctuates — Irvan concludes.</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="concept-statement reveal">
+    <p>
+      <strong>Irvan Damon</strong> is always the presenter. Always the human in the room.
+      His <span class="gold-text">AI avatar, AXIS</span>, handles the show's opens, tops, tails,
+      and punctuation moments. The audience never wonders which is which.
+      <strong>That is the point.</strong> AXIS is the show's signature — the moment viewers know
+      they are watching something built for the AI era.
+      <strong>A production device that is also a statement.</strong>
+    </p>
+    <div class="concept-attribution">— Format Concept · HAIBO · SABC+ 2025</div>
+  </div>
+
+  <!-- WHY THIS WORKS — reframed -->
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-number">01</div>
+      <div class="why-title">Clarity Builds Trust</div>
+      <p class="why-text">The audience always knows Irvan is the human host. No confusion, no gimmick fatigue. AXIS appears in defined, structured moments — so its presence always lands with impact, never dilutes authority.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-number">02</div>
+      <div class="why-title">Ownable Production IP</div>
+      <p class="why-text">No African broadcaster has deployed an AI digital avatar as a recurring in-show production signature. AXIS becomes as recognisable as a channel ident — but it speaks, introduces, and signs off. That is ownable, licensable format IP.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-number">03</div>
+      <div class="why-title">The Show Demonstrates Itself</div>
+      <p class="why-text">A show about AI that uses AI in its own production is self-evidencing. AXIS doesn't explain the topic — AXIS is the topic, functional and present in every single episode, without ever overshadowing the host.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ COUNTER CLOCK ══ -->
+<section class="counter-section">
+  <div class="counter-header reveal">
+    <div class="section-label" style="justify-content:center">The Numbers Don't Lie</div>
+    <h2 class="section-title" style="text-align:center">AI Is Happening <em>Right Now</em></h2>
+  </div>
+  <p class="counter-subtitle reveal">Since you opened this page</p>
+  <div class="live-bar reveal">
+    <span class="live-dot"></span>
+    <span class="live-label">Live Counter</span>
+    <span class="clock-display" id="clockDisplay">00:00:00</span>
+  </div>
+
+  <div class="counters-grid reveal">
+    <div class="counter-card cyan-card" data-bg="①">
+      <div class="counter-topic">AI Jobs Displaced Globally</div>
+      <div class="counter-number" id="cnt-jobs">0</div>
+      <div class="counter-unit">Positions Affected / Year</div>
+      <p class="counter-label">The World Economic Forum projects 85 million roles displaced by AI and automation by 2025, offset by 97 million new ones that don't exist yet.</p>
+      <div class="counter-source">Source: WEF Future of Jobs Report 2023</div>
+    </div>
+    <div class="counter-card red-card" data-bg="②">
+      <div class="counter-topic">Deepfakes Created Today</div>
+      <div class="counter-number" id="cnt-deepfakes">0</div>
+      <div class="counter-unit">Fake Videos Generated / Day</div>
+      <p class="counter-label">Deepfake content has grown over 900% year-on-year since 2022. The majority target private individuals, not public figures.</p>
+      <div class="counter-source">Source: Deeptrace / Sensity AI 2024</div>
+    </div>
+    <div class="counter-card gold-card" data-bg="③">
+      <div class="counter-topic">Global AI Market Value</div>
+      <div class="counter-number" id="cnt-market">0</div>
+      <div class="counter-unit">USD Trillion by 2030</div>
+      <p class="counter-label">The AI industry is projected to contribute $15.7 trillion to the global economy by 2030. More than the current GDP of China and India combined.</p>
+      <div class="counter-source">Source: PwC Global AI Report 2024</div>
+    </div>
+    <div class="counter-card green-card" data-bg="④">
+      <div class="counter-topic">AI Queries Processed Daily</div>
+      <div class="counter-number" id="cnt-queries">0</div>
+      <div class="counter-unit">ChatGPT Queries / Day</div>
+      <p class="counter-label">ChatGPT alone handles over 10 million queries every 24 hours. Add Gemini, Claude, Grok and Copilot — and the number multiplies significantly.</p>
+      <div class="counter-source">Source: OpenAI / Statista 2024</div>
+    </div>
+    <div class="counter-card purple-card" data-bg="⑤">
+      <div class="counter-topic">Voice Clones Active Now</div>
+      <div class="counter-number" id="cnt-voices">0</div>
+      <div class="counter-unit">Synthetic Voices in Circulation</div>
+      <p class="counter-label">Voice fraud losses in South Africa topped R2.6 billion in 2023. Your voice can be cloned in under 3 seconds with a free tool on any smartphone.</p>
+      <div class="counter-source">Source: SABRIC / ElevenLabs 2024</div>
+    </div>
+    <div class="counter-card white-card" data-bg="⑥">
+      <div class="counter-topic">No-Code Apps Built</div>
+      <div class="counter-number" id="cnt-nocode">0</div>
+      <div class="counter-unit">Apps Built Without Code / Month</div>
+      <p class="counter-label">Platforms like Bubble, Glide and Adalo have crossed 4 million apps built without a single line of code. The developer barrier is gone. Most of SA doesn't know it.</p>
+      <div class="counter-source">Source: No-Code Census Report 2024</div>
+    </div>
+  </div>
+
+  <div class="counters-grid-2 reveal">
+    <div class="counter-card cyan-card" data-bg="SA">
+      <div class="counter-topic">South Africa — AI Readiness Index</div>
+      <div class="counter-number" id="cnt-sa">0</div>
+      <div class="counter-unit">Out of 174 Countries Ranked</div>
+      <p class="counter-label">South Africa ranks 65th on the Oxford Insights Government AI Readiness Index. Top-tier for Sub-Saharan Africa. Miles behind the opportunity. HAIBO is the bridge.</p>
+      <div class="counter-source">Source: Oxford Insights AI Readiness Index 2023</div>
+    </div>
+    <div class="counter-card gold-card" data-bg="⏱">
+      <div class="counter-topic">Deepfakes Created Since You Arrived</div>
+      <div class="counter-number" id="cnt-time">0</div>
+      <div class="counter-unit">New Synthetic Videos — This Session</div>
+      <p class="counter-label">At the current rate of production, approximately one new deepfake video is created every 5 minutes somewhere in the world. The clock started when you opened this page.</p>
+      <div class="counter-source">Source: Sensity AI Detection Lab 2024</div>
+    </div>
+  </div>
+
+  <div class="ticker-strip reveal" style="margin-top:2px">
+    <div class="ticker-inner">
+      <span class="hot">⬤ AI MARKET: $15.7T BY 2030</span><span>·</span>
+      <span class="warm">⬤ 85M JOBS DISPLACED · 97M CREATED</span><span>·</span>
+      <span class="hot">⬤ DEEPFAKE GROWTH: +900% SINCE 2022</span><span>·</span>
+      <span class="warm">⬤ SA AI RANK: #65 OF 174 NATIONS</span><span>·</span>
+      <span class="hot">⬤ VOICE FRAUD IN SA: R2.6BN IN 2023</span><span>·</span>
+      <span class="warm">⬤ 10M+ CHATGPT QUERIES / DAY</span><span>·</span>
+      <span class="hot">⬤ 4M+ NO-CODE APPS BUILT GLOBALLY</span><span>·</span>
+      <span class="warm">⬤ AI AGENTS: 300M USERS BY 2026</span><span>·</span>
+      <span class="hot">⬤ AI MARKET: $15.7T BY 2030</span><span>·</span>
+      <span class="warm">⬤ 85M JOBS DISPLACED · 97M CREATED</span><span>·</span>
+      <span class="hot">⬤ DEEPFAKE GROWTH: +900% SINCE 2022</span><span>·</span>
+      <span class="warm">⬤ SA AI RANK: #65 OF 174 NATIONS</span><span>·</span>
+      <span class="hot">⬤ VOICE FRAUD IN SA: R2.6BN IN 2023</span><span>·</span>
+      <span class="warm">⬤ 10M+ CHATGPT QUERIES / DAY</span><span>·</span>
+      <span class="hot">⬤ 4M+ NO-CODE APPS BUILT GLOBALLY</span><span>·</span>
+      <span class="warm">⬤ AI AGENTS: 300M USERS BY 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     EP02 SPOTLIGHT — THE DEEPFAKE MIRROR
+══════════════════════════════════════ -->
+<section class="deepfake-section">
+
+  <!-- THREAT BANNER -->
+  <div class="threat-banner reveal">
+    <span class="threat-banner-icon">⚠️</span>
+    <div class="threat-banner-text">
+      <strong>You have already seen a deepfake.</strong> You just didn't know it. In 2025, over <span class="gold-hl">500,000 synthetic videos</span> were generated per day globally. South Africa recorded R2.6 billion in AI-assisted fraud. This episode doesn't just expose the threat — <strong>it gives viewers the tools to fight back.</strong>
+    </div>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="deepfake-kicker reveal">Episode 02 · Spotlight</div>
+  <h2 class="deepfake-title reveal">The Deepfake <em>Mirror.</em></h2>
+  <p class="deepfake-tagline reveal">"The face looks real. The voice sounds familiar. The account has been drained. By the time you know — it's already done."</p>
+
+  <!-- BODY -->
+  <div class="deepfake-body">
+
+    <!-- LEFT: VIDEO + FACTS -->
+    <div class="deepfake-left reveal">
+
+      <div class="deepfake-video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="https://cdn.shopify.com/videos/c/o/v/778a462d9ad445a58f36ad461b7f0588.mp4" type="video/mp4">
+        </video>
+        <button class="video-mute-btn red" aria-label="Toggle sound" onclick="const v=this.previousElementSibling;v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
+        <div class="deepfake-caption">
+          <span class="rec-dot"></span>
+          Deepfake Detection · Episode 02 · Supporting Evidence
+        </div>
+      </div>
+
+      <div class="deepfake-facts">
+        <div class="deepfake-fact">
+          <div class="df-stat">900%</div>
+          <div class="df-label"><strong>Deepfake content growth since 2022</strong> Year-on-year. The majority of targets are private individuals, not public figures. Your face is the target.</div>
+        </div>
+        <div class="deepfake-fact">
+          <div class="df-stat">3s</div>
+          <div class="df-label"><strong>Time to clone a voice</strong> A free app. A 3-second audio sample. Your mother's voice, calling your name, asking for money. It already happened to someone you know.</div>
+        </div>
+        <div class="deepfake-fact">
+          <div class="df-stat">42%</div>
+          <div class="df-label"><strong>People who can spot a deepfake</strong> Pew Research, 2023. That means 58% cannot. This episode moves South Africa into the 42% — and then some.</div>
+        </div>
+        <div class="deepfake-fact">
+          <div class="df-stat">R2.6bn</div>
+          <div class="df-label"><strong>AI-assisted fraud losses in South Africa</strong> SABRIC 2023. Voice cloning and synthetic identity fraud account for the fastest-growing share.</div>
+        </div>
+        <div class="deepfake-fact">
+          <div class="df-stat">$25M</div>
+          <div class="df-label"><strong>Lost in a single deepfake video call</strong> A Hong Kong multinational transferred $25 million after executives joined what appeared to be a routine video call with their CFO. Every participant on the call was a deepfake. Seasoned professionals could not tell. Neither would you.</div>
+        </div>
+        <div class="deepfake-fact">
+          <div class="df-stat">3,000%</div>
+          <div class="df-label"><strong>Surge in AI deepfake scams — 2023 alone</strong> Not a trend. A fundamental shift in how financial crime operates. By 2027, generative AI fraud losses in the US alone are projected to reach $40 billion — exceeding the GDP of many developed nations.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: THREATS + EPISODE RESPONSE -->
+    <div class="deepfake-right reveal">
+
+      <div class="df-threat-block">
+        <div class="df-threat-title">What a Deepfake Can Do — Right Now, Today</div>
+        <div class="df-threat-list">
+          <div class="df-threat-item">
+            <span class="threat-icon">💼</span>
+            <span><strong>Fake a CFO on a live video call</strong> — every participant synthetic, every face AI-generated, every voice cloned from publicly available recordings. This happened. $25 million. Gone. Before anyone asked a single question.</span>
+          </div>
+          <div class="df-threat-item">
+            <span class="threat-icon">🎭</span>
+            <span><strong>Impersonate a family member</strong> via voice clone. Beg for emergency money. Route to a spoofed account.</span>
+          </div>
+          <div class="df-threat-item">
+            <span class="threat-icon">🏦</span>
+            <span><strong>Bypass biometric banking</strong> using a synthetic face video that matches your ID photo precisely.</span>
+          </div>
+          <div class="df-threat-item">
+            <span class="threat-icon">🗳️</span>
+            <span><strong>Fabricate political statements</strong> from real leaders. Manipulate elections. Plant false evidence.</span>
+          </div>
+          <div class="df-threat-item">
+            <span class="threat-icon">💼</span>
+            <span><strong>Fake a CEO in a video call</strong> and authorise a wire transfer. This has happened at South African companies.</span>
+          </div>
+          <div class="df-threat-item">
+            <span class="threat-icon">📲</span>
+            <span><strong>Destroy a reputation</strong> in 60 seconds. A synthetic video posted at 2am. Viral by 6am. Correction arrives too late.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="df-episode-block">
+        <div class="df-episode-title">What This Episode Does</div>
+        <p class="df-episode-text">
+          HAIBO doesn't just show the threat. It <strong>trains the audience</strong>. By the end of Episode 02, every viewer knows the <span class="gold-hl">five tells of a deepfake</span>, has tested a detection tool via QR scan, and has set up a family safe word against voice-clone fraud. This is the episode that <strong>turns SABC+ into a national security service.</strong>
+        </p>
+        <div class="df-checklist">
+          <div class="df-check">Watch a live deepfake comparison — real vs. synthetic</div>
+          <div class="df-check">Learn the 5 visual and audio detection signals</div>
+          <div class="df-check">Scan QR → access real-time detection tools</div>
+          <div class="df-check">Set up a family safe word protocol in under 2 minutes</div>
+          <div class="df-check">Understand what SA law currently does — and doesn't — cover</div>
+        </div>
+      </div>
+
+      <div class="df-episode-block" style="border-color:rgba(255,45,85,.25);">
+        <div class="df-episode-title">The Research Behind The Episode</div>
+        <p class="df-episode-text">Deepfake scams surged 3,000% in 2023. Voice clones built from minutes of audio. Remote work created the perfect conditions. The detection tools are losing the arms race. This is not speculation — it is already your company's biggest uninsured risk.</p>
+        <div class="ep-pills" style="margin-top:1rem;">
+          <a class="ep-pill-red" href="https://summitwebcraft.co.za/blogs/news/the-perfect-storm-how-deepfake-technology-is-revolutionising-financial-fraud" target="_blank" rel="noopener">Read The Full Analysis →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EPISODE CTA STRIP -->
+  <div class="ep-cta-strip reveal" style="border-color:rgba(255,45,85,.15);background:rgba(255,45,85,.05);margin-top:3.5rem;max-width:1100px;">
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:var(--red)">On Screen — QR Activation</div>
+      <p class="cta-block-text">Viewers scan to <strong>test a live deepfake detection tool</strong> on images and video clips. The episode becomes a hands-on workshop in real time.</p>
+    </div>
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:var(--red)">Policy Angle</div>
+      <p class="cta-block-text">SA's Cybercrimes Act (2020) and POPIA provide <strong>partial but incomplete protection</strong> against deepfake fraud. The episode maps the legal gap and tells viewers exactly where they stand.</p>
+    </div>
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:var(--red)">Sponsor Fit</div>
+      <p class="cta-block-text">Banks, insurers, cybersecurity firms, and telcos are <strong>natural AFP partners</strong> here. First-party data from QR scans is a qualified lead list of consumers actively seeking fraud protection.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     EP07 SPOTLIGHT — MOTHER TONGUES
+══════════════════════════════════════ -->
+<section class="spotlight-section">
+
+  <!-- POLICY BANNER -->
+  <div class="policy-banner reveal">
+    <span class="policy-banner-icon">📋</span>
+    <div class="policy-banner-text">
+      <strong>SA National AI Policy Framework (DCDT, 2024)</strong> explicitly mandates "language justice" — investment in indigenous-language NLP, open corpora, and public-interest datasets to ensure AI services work across all 11 official languages. This episode is not about policy. <strong>This episode IS the policy, already in production.</strong>
+    </div>
+  </div>
+
+  <!-- EPISODE LABEL + HEADLINE -->
+  <div class="spotlight-kicker reveal">Episode 07 · Spotlight</div>
+  <h2 class="spotlight-title reveal">
+    Mother
+    <em>Tongues.</em>
+  </h2>
+  <p class="spotlight-tagline reveal">
+    "If the technology doesn't speak your language, it was never built for you. Let's fix that."
+  </p>
+
+  <!-- BODY -->
+  <div class="spotlight-body">
+
+    <!-- LEFT: THE PROBLEM -->
+    <div class="spotlight-left reveal">
+      <p class="spotlight-problem">
+        Type <strong>"Xhosa"</strong> into Google Translate. Press play. You will hear <span class="hl">"Kosa."</span><br><br>
+        Ask ElevenLabs to say <strong>"Qaphela, inja iyaluma"</strong> — "Be careful, the dog bites." You will hear <span class="hl">"Kaphela."</span><br><br>
+        No clicks. No effort. <strong>25 million speakers, ignored.</strong><br><br>
+        English has 44 phonemes. IsiXhosa has over 60 — including <strong>15 click consonants</strong> that do not exist in any European language. Big Tech has never meaningfully tried to solve this. There is no commercial incentive. No ad revenue attached to a Xhosa click.<br><br>
+        The SA National AI Policy Framework calls this a <span class="hl">language justice</span> failure. HAIBO calls it an episode. And Irvan's NPO already built the solution.
+      </p>
+
+      <div class="phoneme-block">
+        <div class="phoneme-block-title">15 Click Consonants — All Covered by Voice Lab</div>
+        <table class="phoneme-table">
+          <tr>
+            <th>Type</th><th>Dental</th><th>Alveolar</th><th>Lateral</th>
+          </tr>
+          <tr><td>Plain</td><td>c</td><td>q</td><td>x</td></tr>
+          <tr><td>Aspirated</td><td>ch</td><td>qh</td><td>xh</td></tr>
+          <tr><td>Voiced</td><td>gc</td><td>gq</td><td>gx</td></tr>
+          <tr><td>Nasal</td><td>nc</td><td>nq</td><td>nx</td></tr>
+          <tr><td>Voiced Nasal</td><td>ngc</td><td>ngq</td><td>ngx</td></tr>
+        </table>
+      </div>
+
+      <div class="tts-compare">
+        <div class="tts-compare-title">Saying "Qaphela, inja iyaluma" — Who Gets It Right?</div>
+        <div class="tts-row">
+          <span class="tts-engine">Google TTS</span>
+          <span class="tts-output">"Kosa" · "Kaphela..."</span>
+          <span class="tts-result fail">✗ FAILS</span>
+        </div>
+        <div class="tts-row">
+          <span class="tts-engine">ElevenLabs</span>
+          <span class="tts-output">No click. Approximated.</span>
+          <span class="tts-result fail">✗ FAILS</span>
+        </div>
+        <div class="tts-row">
+          <span class="tts-engine">Azure / AWS</span>
+          <span class="tts-output">No isiXhosa model exists.</span>
+          <span class="tts-result fail">✗ FAILS</span>
+        </div>
+        <div class="tts-row">
+          <span class="tts-engine">VOICE LAB</span>
+          <span class="tts-output">Authentic click. Native speaker sourced.</span>
+          <span class="tts-result pass">✓ DELIVERS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: THE SOLUTION -->
+    <div class="spotlight-right reveal">
+
+      <!-- SUPPORTING VIDEO — AI Linguistic Bias -->
+      <div class="spotlight-video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="https://cdn.shopify.com/videos/c/o/v/92e979b9608c4be489e14b72b316303a.mp4" type="video/mp4">
+        </video>
+        <button class="video-mute-btn green" aria-label="Toggle sound" onclick="const v=this.previousElementSibling;v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
+        <div class="spotlight-video-caption">AI Linguistic Bias · Why Big Tech Fails African Languages</div>
+      </div>
+
+      <div class="voicelab-card">
+        <div class="voicelab-logo-line">VOICE LAB</div>
+        <div class="voicelab-sub">by HAIBO PHANDA NPO · African Phoneme API</div>
+        <p class="voicelab-desc">
+          Built by Irvan Damon's NPO, the <strong>African Phoneme API</strong> is the first technology purpose-built to make AI speak African languages correctly. Not approximated. Not guessed. Delivered with authentic click consonant recordings, crowdsourced from native speakers — labelled by phoneme, categorised by click type, tagged by gender, quality-checked before use.
+        </p>
+        <div class="vl-stats">
+          <span class="vl-stat">439 Phoneme Prompts</span>
+          <span class="vl-stat">15 Click Consonants</span>
+          <span class="vl-stat">Male + Female Voices</span>
+          <span class="vl-stat">Growing Daily</span>
+        </div>
+        <a class="voicelab-link" href="https://haibophanda.org.za/pages/voice-lab-1" target="_blank" rel="noopener">
+          Explore Voice Lab
+        </a>
+      </div>
+
+      <div class="hellotutor-pill">
+        <span class="ht-icon">🎓</span>
+        <div class="ht-text">
+          <strong>HelloTutor</strong> — built on the Voice Lab API — is an AI tutor that teaches authentic isiXhosa pronunciation with real click consonants from native speakers. Always on. Always patient. Built for the way Africa actually learns.
+          <br><a href="https://hellotutor.africa/" target="_blank" rel="noopener">Try HelloTutor →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EPISODE CTA STRIP -->
+  <div class="ep-cta-strip reveal">
+    <div class="cta-block">
+      <div class="cta-block-label">On Screen — QR Activation</div>
+      <p class="cta-block-text">Viewers scan to <strong>visit Voice Lab live</strong> and hear the difference between Big Tech and authentic click pronunciation for themselves, in the moment.</p>
+    </div>
+    <div class="cta-block">
+      <div class="cta-block-label">Policy Connection</div>
+      <p class="cta-block-text">SA's DCDT National AI Policy Framework (2024) explicitly mandates investment in <strong>indigenous-language NLP and open phoneme corpora</strong>. This episode names the gap and fills it.</p>
+    </div>
+    <div class="cta-block">
+      <div class="cta-block-label">Why This Is the Pitch's Strongest Card</div>
+      <p class="cta-block-text">The show's host is not <em>reporting on</em> the solution. <strong>He built it.</strong> HAIBO Phanda NPO is already doing what government policy is only now asking for. That credibility is unassailable.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPARABLE SHOWS -->
+<section class="comp-shows reveal">
+  <div class="section-label">Context & Comparable</div>
+  <h2 class="section-title">Shows That Prove <em>The Market</em></h2>
+  <p class="comp-intro">HAIBO stands at the intersection of investigative infotainment and empowerment television. These global benchmarks prove the appetite. None of them are made for South Africa. None of them have a human presenter co-hosting with their own AI twin. That gap is the opportunity.</p>
+  <div class="shows-grid">
+    <div class="show-card"><div class="show-network">Netflix / Vox Media</div><div class="show-name">EXPLAINED</div><p class="show-desc">Bite-sized 20-minute deep dives into complex modern topics. Each episode distils a dense subject into narrative gold with massive streaming traction.</p><p class="show-relevance"><strong>HAIBO borrows:</strong> The 24-minute format, clear expert-to-audience voice, and single-topic mastery per episode. We add interactivity through CTV QR codes.</p></div>
+    <div class="show-card"><div class="show-network">HBO</div><div class="show-name">LAST WEEK TONIGHT</div><p class="show-desc">John Oliver's formula — "take a scary topic, make it approachable, then make it actionable" — is the gold standard for infotainment. Deep-dive segments regularly go viral.</p><p class="show-relevance"><strong>HAIBO borrows:</strong> The host-as-guide model, escalating reveal structure, and "this affects you right now" urgency. The AI twin provides the sharp foil.</p></div>
+    <div class="show-card"><div class="show-network">Al Jazeera / PBS</div><div class="show-name">FAULT LINES</div><p class="show-desc">Investigative journalism meets narrative documentary. Uses real people's stories as access points to larger systemic conversations.</p><p class="show-relevance"><strong>HAIBO borrows:</strong> The "this is a real family, this is a real scam" ground-level storytelling device for episodes like <em>The Voice Thief</em>.</p></div>
+    <div class="show-card"><div class="show-network">Bloomberg Originals</div><div class="show-name">HELLO WORLD</div><p class="show-desc">Ashlee Vance finds the most disruptive tech builders globally. Human, curious, never condescending. Proves tech content for non-tech audiences works commercially.</p><p class="show-relevance"><strong>HAIBO borrows:</strong> The "curious non-expert host" posture. Never talking down to the audience. Critical for South African township entrepreneurs.</p></div>
+    <div class="show-card"><div class="show-network">Netflix</div><div class="show-name">THE GREAT HACK</div><p class="show-desc">The Cambridge Analytica documentary proved data-privacy content can reach mainstream audiences and generate massive cultural conversation well beyond the tech community.</p><p class="show-relevance"><strong>HAIBO borrows:</strong> The "your data was weaponised without your knowledge" reveal structure — used directly in Episodes 12 and 8.</p></div>
+    <div class="show-card"><div class="show-network">CGTN Africa</div><div class="show-name">THE AFRICAN TECH SHOW</div><p class="show-desc">Pan-African tech reporting proving a Black African audience is hungry for content treating them as innovators, not victims of the technology divide.</p><p class="show-relevance"><strong>HAIBO contrasts:</strong> We go deeper, more personal, more actionable. And we bring a format revolution: human co-presenting with his own digital twin.</p></div>
+    <div class="show-card platform-compare"><div class="show-network">SABC+ · Live Now</div><div class="show-name">AI FOR ALL</div><p class="show-desc">Microsoft AI Skills course currently streaming on SABC+. Corporate training format covering job roles, accessibility, and Copilot adoption.</p><p class="show-relevance"><strong>HAIBO contrasts directly</strong> — same platform, same audience, entirely different register. AI for All is a course. HAIBO is a show. One informs. The other transforms.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section class="roadmap reveal">
+  <div class="section-label">The 14-Part Roadmap</div>
+  <h2 class="section-title">Three Phases. <em>One Nation</em>. Woke.</h2>
+
+  <div class="phase-block phase-1">
+    <div class="phase-header">
+      <div class="phase-number">01</div>
+      <div class="phase-info"><div class="phase-label">Phase One</div><div class="phase-name">HOME &amp; IDENTITY</div><div class="phase-theme">Trust &amp; Protection</div></div>
+    </div>
+    <div class="episodes-row">
+      <div class="ep-card"><div class="ep-num">EP 01</div><div class="ep-title">The Voice Thief</div><p class="ep-desc">A deep dive into voice-cloning. How scammers mimic loved ones and how to protect your family before the call comes.</p><div class="ep-qr">Set up a Family Safe Word guide</div></div>
+      <div class="ep-card"><div class="ep-num">EP 02</div><div class="ep-title">The Deepfake Mirror</div><p class="ep-desc">500,000 fake videos generated daily. 58% of people cannot spot one. This episode trains the other 42% — live detection, family safe word setup, and the five tells Big Tech doesn't want you to miss.</p><div class="ep-qr">Spot the Fake — live detection tools</div></div>
+      <div class="ep-card"><div class="ep-num">EP 03</div><div class="ep-title">Decoding Dyslexia</div><p class="ep-desc">Using AI voice-agents to assist neurodivergent learners. The classroom is being quietly redesigned.</p><div class="ep-qr">Download AI Literacy Kit</div></div>
+      <div class="ep-card"><div class="ep-num">EP 04</div><div class="ep-title">Silicon Souls</div><p class="ep-desc">What would Jung make of a chatbot? A colleague told Irvan she'd been venting to an AI. Better than burdening a friend, she said. 1 in 8 young people now use AI chatbots for mental health advice. At UWC, 30.6% of students reported suicidal thoughts — and at 2am, no human support is available. This episode does not take sides. It asks the question South Africa cannot afford to ignore.</p><div class="ep-qr">Try a multilingual AI therapy framework — live</div>
+        <div class="ep-stat-bar" style="border-color:rgba(180,74,255,.12);background:rgba(180,74,255,.04);">
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:#b44aff;">1 in 8</div><div class="ep-stat-label">Young people using AI for mental health</div></div>
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:#b44aff;">93%</div><div class="ep-stat-label">Report it helpful — RAND 2025</div></div>
+        </div>
+        <div class="ep-pills">
+          <a class="ep-pill-gold" href="https://summitwebcraft.co.za/blogs/news/what-would-jung-make-of-a-chatbot-when-silicon-meets-the-psyche" target="_blank" rel="noopener">Read The Full Argument →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block phase-2">
+    <div class="phase-header">
+      <div class="phase-number">02</div>
+      <div class="phase-info"><div class="phase-label">Phase Two</div><div class="phase-name">WORK &amp; UTILITY</div><div class="phase-theme">The No-Code Revolution</div></div>
+    </div>
+    <div class="episodes-row">
+      <div class="ep-card"><div class="ep-num">EP 05</div><div class="ep-title">The 24/7 Agent</div><p class="ep-desc">AI Agents that handle bookings, queries, and follow-ups. While you sleep. For free.</p><div class="ep-qr">Trial a bespoke AI Voice Agent</div>
+        <a class="ep-stat-bar" href="https://www.linkedin.com/feed/update/urn:li:activity:7376272942290264064/" target="_blank" rel="noopener">
+          <div class="ep-stat-block"><div class="ep-stat-num">1,247%</div><div class="ep-stat-label">ROI Achieved</div></div>
+          <div class="ep-stat-block"><div class="ep-stat-num">6.2mo</div><div class="ep-stat-label">Payback Period</div></div>
+          <div class="ep-stat-block"><div class="ep-stat-num">🔗</div><div class="ep-stat-label">Verified LinkedIn Post</div></div>
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:var(--gold);">24/7</div><div class="ep-stat-label">What luxury clients demand — and AI delivers</div></div>
+        </a>
+        <p style="font-style:italic;color:rgba(240,240,245,.45);font-size:.68rem;line-height:1.6;margin-top:.7rem;">From the Pick n Pay queue to a Sabi Sabi safari lodge — a nut allergy, a silent website, and a lost dream booking that should never have happened. AI agents fix service at every price point.</p>
+        <div class="ep-pills">
+          <a class="ep-pill-gold" href="https://haibophanda.org.za/pages/case-studies-resources" target="_blank" rel="noopener">Full Case Study →</a>
+          <a class="ep-pill-gold" href="https://www.linkedin.com/feed/update/urn:li:activity:7376272942290264064/" target="_blank" rel="noopener">View LinkedIn Post →</a>
+          <a class="ep-pill-gold" href="https://summitwebcraft.co.za/blogs/news/did-a-silent-website-cost-a-family-their-dream-safari-why-ai-agents-are-the-future-of-luxury-travel" target="_blank" rel="noopener">The Safari That Got Away →</a>
+        </div>
+      </div>
+      <div class="ep-card"><div class="ep-num">EP 06</div><div class="ep-title">No-Code 101</div><p class="ep-desc">Building your first AI app without writing a single line of code. By the end of this episode, you already have.</p><div class="ep-qr">Access No-Code Startup Templates</div></div>
+      <div class="ep-card"><div class="ep-num">EP 07</div><div class="ep-title">Mother Tongues</div><p class="ep-desc">Training agents in isiXhosa and isiZulu. Big Tech can't pronounce a click consonant. An SA NPO already solved it — 15 click types, 439 phoneme prompts, native speakers. The policy demands it. The technology exists. Now the country needs to know.</p><div class="ep-qr">Try the Voice Lab & HelloTutor</div></div>
+      <div class="ep-card"><div class="ep-num">EP 08</div><div class="ep-title">The Incorruptible Director</div><p class="ep-desc">Abu Dhabi appointed an AI to its board. It drove 49.4% revenue growth and 18.3% profit increases. South Africa's SOEs have hemorrhaged over R350 billion in bailouts. Eskom. The Post Office. Transnet. What if an AI director had been in that room? You can't bribe an algorithm. You can't intimidate it with political connections. It doesn't care about tender awards to politically connected firms. It simply flags the pattern. Every. Single. Time.</p><div class="ep-qr">Design your own AI governance framework — live</div>
+        <div class="ep-stat-bar" style="border-color:rgba(0,255,163,.12);background:rgba(0,255,163,.04);">
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:#00ffa3;">R50bn</div><div class="ep-stat-label">Potential annual public sector savings</div></div>
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:#00ffa3;">49.4%</div><div class="ep-stat-label">Revenue growth — Abu Dhabi AI board result</div></div>
+        </div>
+        <p style="font-style:italic;color:rgba(240,240,245,.45);font-size:.68rem;line-height:1.6;margin-top:.7rem;">This episode is being pitched to a board that could use one of these. Haibo.</p>
+        <div class="ep-pills">
+          <a class="ep-pill-gold" href="https://summitwebcraft.co.za/blogs/news/the-ai-board-revolution-how-digital-directors-could-save-south-africa-r50-billion-in-public-sector-waste" target="_blank" rel="noopener">Read The Full Argument →</a>
+        </div>
+      </div>
+      <div class="ep-card"><div class="ep-num">EP 09</div><div class="ep-title">The Policy Map</div><p class="ep-desc">Unpacking SA's National AI Policy Framework and its direct impact on your career path over the next five years.</p><div class="ep-qr">Plain-Language Policy Guide</div></div>
+    </div>
+  </div>
+
+  <div class="phase-block phase-3">
+    <div class="phase-header">
+      <div class="phase-number">03</div>
+      <div class="phase-info"><div class="phase-label">Phase Three</div><div class="phase-name">PLAY &amp; THE FUTURE</div><div class="phase-theme">Creativity &amp; Security</div></div>
+    </div>
+    <div class="episodes-row">
+      <div class="ep-card"><div class="ep-num">EP 10</div><div class="ep-title">The Sound of Auraa</div><p class="ep-desc">South Africa's first AI-generated Amapiano album dropped in late 2025 — drenched in kwaito DNA and kasi rap. 150,000 Spotify streams across 12 countries. No label. No studio. No gatekeepers. When AI can replicate the township sound that defined a generation, two questions demand an answer: who owns the culture — and who profits from it?</p><div class="ep-qr">Generate your own AI township track — live</div></div>
+      <div class="ep-card"><div class="ep-num">EP 11</div><div class="ep-title">Scan the World</div><p class="ep-desc">Immersive AI podcasts via QR codes — galleries, property listings, SMMEs. Scan a painting and hear the artist's story. Scan a for-sale board and walk the home. Turn static into living narrative. No studio, no code, no gatekeepers.</p><div class="ep-qr">Build your own immersive QR experience</div></div>
+      <div class="ep-card"><div class="ep-num">EP 12</div><div class="ep-title">Digital Heists</div><p class="ep-desc">Protecting your bank account from agentic scams and automated fraud. The thieves have already automated. Have you?</p><div class="ep-qr">Cyber-Safety Health Check</div></div>
+      <div class="ep-card"><div class="ep-num">EP 13</div><div class="ep-title">Synthetic Icons</div><p class="ep-desc">AI versus Human Influencers in South African fashion. What happens when the face selling you something doesn't exist?</p><div class="ep-qr">Brand Engagement Poll</div></div>
+      <div class="ep-card"><div class="ep-num">EP 14</div><div class="ep-title">The Final Handshake</div><p class="ep-desc">The season finale. Every thread — deepfakes, language, culture, governance, service, mental health — pulled into one question: what do humans do that AI cannot? The WGA went on strike over it. South African screenwriters are asking it right now. Bloggers, copywriters, journalists. HAIBO does not answer it. Irvan sits across from AXIS and they work it out together — live, on camera, in the last 24 minutes of the season. Algorithms can optimise for engagement. Only humans can create connection. That line is not a conclusion. It is the beginning of the next conversation.</p><div class="ep-qr">Write your own human-AI creative brief — live</div>
+        <div class="ep-stat-bar" style="border-color:rgba(245,197,66,.12);background:rgba(245,197,66,.04);">
+          <div class="ep-stat-block"><div class="ep-stat-num" style="color:var(--gold);">148</div><div class="ep-stat-label">Days — 2023 WGA strike over AI in Hollywood</div></div>
+        </div>
+        <p style="font-style:italic;color:rgba(240,240,245,.45);font-size:.68rem;line-height:1.6;margin-top:.7rem;">The irony: this pitch deck was written with AI. The show it pitches defends why that still matters.</p>
+        <div class="ep-pills">
+          <a class="ep-pill-gold" href="https://summitwebcraft.co.za/blogs/news/the-anatomy-of-a-blog-in-the-age-of-ai-has-authentic-writing-died-or-just-evolved" target="_blank" rel="noopener">Has Authentic Writing Died? →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VALUE PROP -->
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     EP10 SPOTLIGHT — THE SOUND OF AURAA
+══════════════════════════════════════ -->
+<section class="auraa-section">
+
+  <div class="auraa-alert reveal">
+    <span class="auraa-alert-icon">🎵</span>
+    <div class="auraa-alert-text">
+      In late 2025, innovator <strong>Gift Lubele</strong> released South Africa's first AI-generated Amapiano album — heavily influenced by kwaito and kasi rap. It hit <strong>150,000 Spotify streams across 12 countries</strong> before most South Africans knew it existed. HAIBO tells that story — and then shows you how to build the next one.
+    </div>
+  </div>
+
+  <div class="auraa-kicker reveal">Episode 10 · Spotlight</div>
+  <h2 class="auraa-title reveal">The Sound<br><em>of Auraa.</em></h2>
+  <p class="auraa-tagline reveal">"A machine learned the heartbeat of the township. Now it is composing it. The question is not whether AI can make kwaito. The question is who gets paid when it does."</p>
+
+  <div class="auraa-body">
+
+    <!-- LEFT — The cultural argument -->
+    <div class="auraa-left reveal">
+      <p class="auraa-intro">
+        Kwaito is not just music. It is memory. Township slang, slow-cooked basslines, taxi-rank energy. For 30 years it has been the unofficial soundtrack of post-apartheid South Africa. Now an AI model trained on that heritage can generate a full track in under 90 seconds. HAIBO Episode 10 asks: is this <strong>liberation</strong> — or is this <strong>theft</strong>?
+      </p>
+
+      <div class="auraa-fact">
+        <div class="auraa-fact-num">150K+</div>
+        <div class="auraa-fact-text">Spotify streams across 12 countries — no label, no studio, no radio push. Pure digital-first AI music.</div>
+      </div>
+      <div class="auraa-fact">
+        <div class="auraa-fact-num">90 sec</div>
+        <div class="auraa-fact-text">Time to generate a full kwaito-influenced AI track using Suno, Udio, or Soundraw. The studio barrier is gone.</div>
+      </div>
+      <div class="auraa-fact">
+        <div class="auraa-fact-num">R0</div>
+        <div class="auraa-fact-text">Royalties collected by original kwaito artists whose catalogues trained these AI models. The culture was mined. The creators were not compensated.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT — What HAIBO does with this -->
+    <div class="auraa-right reveal">
+      <div class="auraa-right-title">Inside the Episode</div>
+
+      <div class="auraa-point">
+        <div class="auraa-point-num">1</div>
+        <p class="auraa-point-text">Gift Lubele tells his story — the musician-turned-AI-producer who made South Africa's first fully AI-generated Amapiano album</p>
+      </div>
+      <div class="auraa-point">
+        <div class="auraa-point-num">2</div>
+        <p class="auraa-point-text">AXIS breaks down the tech — how diffusion models and transformers learn musical structure, and why kwaito's rhythmic DNA was so easy to replicate</p>
+      </div>
+      <div class="auraa-point">
+        <div class="auraa-point-num">3</div>
+        <p class="auraa-point-text">The royalty gap — we investigate who trained these models, which catalogues were scraped, and why South African IP law has no answer</p>
+      </div>
+      <div class="auraa-point">
+        <div class="auraa-point-num">4</div>
+        <p class="auraa-point-text">Live QR activation — the viewer generates their own AI township track in real time, confronting the power and the problem simultaneously</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="auraa-cta-strip reveal">
+    <div class="auraa-cta-block">
+      <div class="auraa-cta-label gold">The Activation</div>
+      <p class="auraa-cta-text">Scan the QR code. Choose a township sub-genre — kwaito, amapiano, gqom, or kasi rap. The AI generates a 30-second track live. You hear it. You own the question: <strong>should this exist?</strong></p>
+    </div>
+    <div class="auraa-cta-block">
+      <div class="auraa-cta-label amber">The Outcome</div>
+      <p class="auraa-cta-text">The viewer does not just hear about AI music. They <strong>make it</strong>. They feel the thrill and the discomfort. That is the HAIBO method — <strong>experience first, opinion second</strong>.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     EP11 SPOTLIGHT — IMMERSIVE ART & QR
+══════════════════════════════════════ -->
+<section class="immersive-section">
+
+  <div class="meta-banner reveal">
+    <span class="meta-banner-icon">🔁</span>
+    <div class="meta-banner-text">
+      <strong>The meta-moment in the pitch:</strong> HAIBO uses <span class="gold-hl">QR codes as its own audience activation tool</span> throughout every episode. Episode 10 is a full episode <em>about</em> QR code immersive experiences in art, property, and audio. <strong>The show's format and its content are the same idea.</strong> That is a commissioning editor's dream.
+    </div>
+  </div>
+
+  <div class="immersive-kicker reveal">Episode 11 · Spotlight</div>
+  <h2 class="immersive-title reveal">Scan the <em>World.</em></h2>
+  <p class="immersive-tagline reveal">"A QR code on a painting. A voice in your ear. The story of a brushstroke — told by the artist who made it."</p>
+
+  <div class="immersive-body">
+
+    <div class="immersive-left reveal">
+      <div class="immersive-video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="https://cdn.shopify.com/videos/c/o/v/69de6c7dd1d64a8c875d3aae56a0a9f3.mp4" type="video/mp4">
+        </video>
+        <button class="video-mute-btn purple" aria-label="Toggle sound" onclick="const v=this.previousElementSibling;v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
+        <div class="video-caption">Immersive AI Podcasts · QR Activation Demo</div>
+      </div>
+
+      <div class="use-cases">
+        <div class="use-case-card art">
+          <span class="use-case-icon">🎨</span>
+          <div class="use-case-title">Gallery & Art</div>
+          <p class="use-case-text">A QR code beside a painting launches a narrated audio experience — the artist's technique, inspiration, and story. Passive viewing becomes deep connection. Browsers become buyers.</p>
+        </div>
+        <div class="use-case-card prop">
+          <span class="use-case-icon">🏠</span>
+          <div class="use-case-title">Property & Real Estate</div>
+          <p class="use-case-text">Estate agents retire the static PDF brochure. Buyers scan a board outside a home and walk through an immersive audio tour — narrated, atmospheric, and shoppable in real time.</p>
+        </div>
+        <div class="use-case-card pod">
+          <span class="use-case-icon">🎙</span>
+          <div class="use-case-title">AI Podcast Generation</div>
+          <p class="use-case-text">Any static listing becomes a generated audio narrative on demand. No studio. No producer. Just a QR code and a voice that knows everything about what it is describing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="immersive-right reveal">
+      <div class="how-it-works">
+        <div class="how-title">How It Works — In 4 Moves</div>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div class="how-step-content">
+              <div class="how-step-label">Scan</div>
+              <p class="how-step-text">Viewer holds phone to a QR code on an artwork, a property sign, an exhibit panel, or a product label.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div class="how-step-content">
+              <div class="how-step-label">Generate</div>
+              <p class="how-step-text">An <strong>AI-generated audio narrative</strong> launches instantly — contextual, rich, voiced. No app download. No login. Just the story.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div class="how-step-content">
+              <div class="how-step-label">Immerse</div>
+              <p class="how-step-text">The listener hears <strong>narrated storytelling</strong> that brings the object, space, or property to life. Technique. History. Inspiration. Price. Availability.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">4</div>
+            <div class="how-step-content">
+              <div class="how-step-label">Convert</div>
+              <p class="how-step-text">The experience ends with a <strong>real-time purchase or enquiry link</strong>. Passive browsers become active buyers. Footfall becomes pipeline.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="qr-meta-card">
+        <div class="qr-meta-title">Why This Hits Differently on HAIBO</div>
+        <p class="qr-meta-text">
+          Every episode of HAIBO already uses <span class="gold-hl">on-screen QR codes</span> as its audience activation mechanic. Episode 10 teaches viewers how to <strong>build and deploy their own immersive QR audio experiences</strong> — turning the show's own format tool into the lesson itself. Watch the show. Scan the screen. Then go build the same thing for your gallery, your home, your SMME. <strong>That loop — from content to capability — is what no other show on SABC does.</strong>
+        </p>
+      </div>
+
+      <div class="outcomes-strip">
+        <div class="outcome-block">
+          <div class="outcome-label">For Creatives</div>
+          <p class="outcome-text">Artists and gallery owners attach living audio stories to static work. A new revenue model with no intermediary.</p>
+        </div>
+        <div class="outcome-block">
+          <div class="outcome-label">For Property</div>
+          <p class="outcome-text">Estate agents eliminate brochure costs. Buyers self-qualify through immersive tours before booking a viewing.</p>
+        </div>
+        <div class="outcome-block">
+          <div class="outcome-label">For SMMEs</div>
+          <p class="outcome-text">Any small business with a product gets a voice. A no-code audio marketing tool that costs nothing to launch.</p>
+        </div>
+        <div class="outcome-block">
+          <div class="outcome-label">For Sponsors</div>
+          <p class="outcome-text">This episode is a direct product demo opportunity. Any QR-enabled brand is a natural integration partner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE PROOF BLOCK -->
+  <div class="live-proof reveal">
+    <div class="live-proof-title">This Is Not A Concept. This Is Already Built.</div>
+    <div class="live-proof-grid">
+      <div class="lp-card">
+        <div class="lp-card-label">EP 10 · Immersive Podcasts</div>
+        <div class="lp-card-title">Scan. Hear. Buy.</div>
+        <p class="lp-card-text">QR code on an artwork or property listing triggers an AI-generated audio narrative instantly. No app. No login. Estate agents eliminate PDF brochures. Gallery curators share the story behind every brushstroke. Passive viewing becomes purchase.</p>
+        <a class="lp-card-link" href="https://cdn.shopify.com/videos/c/o/v/73cbe758d6434704a0bfbc6976020436.mp4" target="_blank" rel="noopener">See Live Demo →</a>
+      </div>
+      <div class="lp-card">
+        <div class="lp-card-label">EP 02 · Deepfakes for Good</div>
+        <div class="lp-card-title">One Recording. Many Languages.</div>
+        <p class="lp-card-text">Deep fake technology repurposed for social impact. Government briefings, PSAs, and corporate statements delivered in multiple languages from a single recording. The same technology that threatens — transformed into a tool that serves.</p>
+        <a class="lp-card-link" href="https://cdn.shopify.com/videos/c/o/v/778a462d9ad445a58f36ad461b7f0588.mp4" target="_blank" rel="noopener">View Demo →</a>
+      </div>
+      <div class="lp-card">
+        <div class="lp-card-label">EP 05 · AI Agents</div>
+        <div class="lp-card-title">1,247% ROI. 6.2 Month Payback.</div>
+        <p class="lp-card-text">A 12-room SA safari lodge deployed 5 AI agents — concierge, revenue optimiser, experience orchestrator, reputation guardian, operations commander. Revenue grew from R18.2M to R28.7M. Occupancy from 65% to 87%. Response time from 4 hours to 2 minutes.</p>
+        <a class="lp-card-link" href="https://haibophanda.org.za/pages/case-studies-resources" target="_blank" rel="noopener">Full Case Study →</a>
+      </div>
+    </div>
+    <div class="lp-bar">
+      <div class="lp-bar-text">7 live AI creations. Voice cloning, AI avatars, context-driven chatbots, immersive podcasts, deepfakes for good. Every HAIBO episode has a working proof of concept already deployed by the same team.</div>
+      <a class="lp-bar-link" href="https://haibophanda.org.za/pages/case-studies-resources" target="_blank" rel="noopener">View All Case Studies → haibophanda.org.za</a>
+    </div>
+  </div>
+
+  <div class="ep-cta-strip reveal" style="border-color:rgba(180,74,255,.15);background:rgba(180,74,255,.06);margin-top:3.5rem;max-width:1100px;">
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:#b44aff">On Screen — QR Activation</div>
+      <p class="cta-block-text">Viewers scan to <strong>try a live immersive audio experience</strong> — a real gallery piece or property, narrated in real time. The episode becomes the product demo.</p>
+    </div>
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:#b44aff">No-Code Build</div>
+      <p class="cta-block-text">By the end of the episode, every viewer knows how to <strong>create and deploy their own immersive QR audio experience</strong> without writing a single line of code.</p>
+    </div>
+    <div class="cta-block" style="background:var(--black);">
+      <div class="cta-block-label" style="color:#b44aff">Sponsor Fit</div>
+      <p class="cta-block-text">Property portals, gallery networks, tourism boards — all <strong>natural AFP partners</strong> for this episode. High commercial alignment with measurable scan data.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<section class="value-prop reveal">
+  <div class="section-label">Sponsor Value: CTV Strategy</div>
+  <h2 class="section-title">SABC+ as a <em>Performance Engine</em></h2>
+  <p style="font-size:1rem;line-height:1.8;color:rgba(240,240,245,.7);max-width:640px;margin-top:1rem;">This is not a passive broadcast. Every episode is an interactive performance marketing moment designed to generate measurable, attributable ROI for the AFP sponsor.</p>
+  <div class="value-grid">
+    <div class="value-card"><span class="value-icon">🤖</span><div class="value-label">Human + Avatar Format</div><p class="value-text">The dual-presenter model is not just a creative choice — it is a brand-safe demonstration vehicle. Sponsors are integrated into a show that literally proves the product works.</p></div>
+    <div class="value-card"><span class="value-icon">📡</span><div class="value-label">The AXIS Pop-In</div><p class="value-text">The AI co-host delivers technical insights mid-episode and triggers the Immersive QR Code moment, bridging passive viewing and active participation.</p></div>
+    <div class="value-card"><span class="value-icon">📊</span><div class="value-label">Measurable ROI</div><p class="value-text">Every QR scan provides the sponsor with first-party data and direct qualified leads. The audience self-selects by scanning. High intent, zero waste.</p></div>
+    <div class="value-card"><span class="value-icon">🏛️</span><div class="value-label">Mandate Alignment</div><p class="value-text">Supports SABC's core goals for Digital Literacy and Linguistic Inclusivity. An AFP that satisfies the regulator and the sales team simultaneously.</p></div>
+    <div class="value-card"><span class="value-icon">🌍</span><div class="value-label">National Reach</div><p class="value-text">SABC+ growing subscriber base across South Africa's 11 official language communities. Multilingual episode formats extend that reach exponentially.</p></div>
+    <div class="value-card"><span class="value-icon">⚡</span><div class="value-label">Audience Activation</div><p class="value-text">The QR ecosystem is not a call-to-action. It is a learning activation. Viewers don't just buy. They build. They become part of the show's data story.</p></div>
+  </div>
+</section>
+
+<!-- CTV PROPOSITION -->
+<section id="ctv-proposition">
+  <div class="section-label reveal">The Commercial Engine</div>
+  <h2 class="section-title reveal" style="margin-bottom:0;">Why HAIBO on CTV<br><em style="color:var(--gold);">Changes Everything.</em></h2>
+  <p class="ctv-tagline reveal">This is not a TV show with ads. It is a performance marketing engine dressed as a show.</p>
+
+  <div class="ctv-alert reveal">SABC+ is a Connected TV platform. Every HAIBO viewer is a qualified, addressable, measurable audience. The sponsor does not buy eyeballs. They buy actions.</div>
+
+  <div class="ctv-stats-grid reveal">
+    <div class="ctv-stat-card">
+      <div class="ctv-stat-number">2.4×</div>
+      <div class="ctv-stat-label">Greater sales impact than Facebook</div>
+      <p class="ctv-stat-sub">CTV full-screen viewing drives 2.4x the sales impact of Facebook and 2.75x that of YouTube. HAIBO viewers are at peak attention.</p>
+    </div>
+    <div class="ctv-stat-card">
+      <div class="ctv-stat-number">6×</div>
+      <div class="ctv-stat-label">Engagement lift with QR on CTV</div>
+      <p class="ctv-stat-sub">Brands using QR codes in Connected TV campaigns report 6x higher engagement than interactive mobile advertising. HAIBO runs a QR moment in every single episode.</p>
+    </div>
+    <div class="ctv-stat-card">
+      <div class="ctv-stat-number">30%</div>
+      <div class="ctv-stat-label">Higher ROAS than other devices</div>
+      <p class="ctv-stat-sub">CTV programmatic generates 30% higher return on ad spend than any other device. The big screen plus first-party data is the most efficient buy in advertising.</p>
+    </div>
+    <div class="ctv-stat-card">
+      <div class="ctv-stat-number">22%</div>
+      <div class="ctv-stat-label">Lift in paid search conversions</div>
+      <p class="ctv-stat-sub">Adding CTV to the media mix increases paid search and social conversion rates by up to 22.27%. HAIBO does not just run on SABC+. It amplifies everything else the sponsor is running.</p>
+    </div>
+  </div>
+
+  <div class="ctv-video-label reveal">See It In Action</div>
+  <div class="ctv-video-wrap reveal">
+    <video autoplay muted loop playsinline>
+      <source src="QR_Connected_TV.mp4" type="video/mp4">
+    </video>
+    <button class="video-mute-btn gold" aria-label="Toggle sound" onclick="const v=this.previousElementSibling;v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
+    <div class="ctv-video-caption">Connected TV + QR Activation · Live Demo · HAIBO AFP Concept</div>
+  </div>
+
+  <div class="ctv-flow-title reveal">How the HAIBO CTV + QR Mechanic Works</div>
+  <div class="ctv-flow reveal">
+    <div class="ctv-step">
+      <span class="ctv-step-icon">📺</span>
+      <div class="ctv-step-num">01</div>
+      <p class="ctv-step-text">Viewer watches HAIBO on SABC+ CTV app</p>
+    </div>
+    <div class="ctv-arrow">→</div>
+    <div class="ctv-step">
+      <span class="ctv-step-icon">📱</span>
+      <div class="ctv-step-num">02</div>
+      <p class="ctv-step-text">QR code appears mid-episode, contextualised to the story</p>
+    </div>
+    <div class="ctv-arrow">→</div>
+    <div class="ctv-step">
+      <span class="ctv-step-icon">🔗</span>
+      <div class="ctv-step-num">03</div>
+      <p class="ctv-step-text">Viewer scans — lands on sponsor-branded micro-experience</p>
+    </div>
+    <div class="ctv-arrow">→</div>
+    <div class="ctv-step">
+      <span class="ctv-step-icon">📊</span>
+      <div class="ctv-step-num">04</div>
+      <p class="ctv-step-text">First-party data captured: who scanned, when, from where</p>
+    </div>
+    <div class="ctv-arrow">→</div>
+    <div class="ctv-step">
+      <span class="ctv-step-icon">🔁</span>
+      <div class="ctv-step-num">05</div>
+      <p class="ctv-step-text">Retargeting loop activates — sponsor owns the audience</p>
+    </div>
+  </div>
+
+  <div class="ctv-closing reveal">Every scan is a <strong>lead</strong>. Every lead is <strong>attributable</strong>. Every episode is a <strong>campaign</strong>. This is the <strong>HAIBO engine</strong>.</div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta reveal">
+  <a class="contact-cta-btn" href="https://ecas.powerappsportals.com/" target="_blank" rel="noopener">COMMISSION THIS SHOW →</a>
+  <div class="contact-links">
+    <a class="cyan-link" href="https://www.sabc.co.za/sabc/content-submission-2/" target="_blank" rel="noopener">Download AFP Submission Form</a>
+    <a class="gold-link" href="mailto:commissioning@sabc.co.za">Email Commissioning Team</a>
+  </div>
+  <p class="contact-disclaimer">HAIBO is submitted as an Advertiser Funded Programme (AFP). Letters of sponsor interest available on request. © 2025 HAIBO PHANDA NPO / SUMMITWEBCRAFT. All rights reserved.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logos">
+    <div class="footer-logo">HAIBO!</div>
+    <img src="pluslogo_t.png" alt="SABC+" style="height:44px;vertical-align:middle;opacity:0.92;">
+  </div>
+  <div class="footer-credits">
+    Concept by <strong>Irvan Damon</strong><br>
+    SUMMITWEBCRAFT &nbsp;·&nbsp; HAIBO PHANDA &nbsp;·&nbsp; The Sentinel<br>
+    Produced for <span style="color:var(--cyan);font-weight:700;">SABC<span style="color:white">+</span></span>
+    &nbsp;·&nbsp; AFP / CTV Format<br>
+    <span style="color:rgba(122,122,153,.4);font-size:.7rem">v3.0 · Concept Pitch Deck · 2025</span>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+  // Scroll reveal
+  const ro = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // Episode stagger
+  const eo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.querySelectorAll('.ep-card').forEach((c,i) => setTimeout(() => { c.style.opacity='1'; c.style.transform='translateY(0)'; }, i*80));
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.episodes-row').forEach(r => eo.observe(r));
+
+  // Live clock
+  const t0 = Date.now();
+  setInterval(() => {
+    const e = Math.floor((Date.now()-t0)/1000);
+    const h = String(Math.floor(e/3600)).padStart(2,'0');
+    const m = String(Math.floor((e%3600)/60)).padStart(2,'0');
+    const s = String(e%60).padStart(2,'0');
+    document.getElementById('clockDisplay').textContent = `${h}:${m}:${s}`;
+  }, 1000);
+
+  // Deepfake time counter
+  function updateDFTime() {
+    const secs = (Date.now()-t0)/1000;
+    document.getElementById('cnt-time').textContent = Math.floor(secs/300);
+  }
+  setInterval(updateDFTime, 5000); updateDFTime();
+
+  // Animated counters
+  const counters = [
+    { id:'cnt-jobs',    target:85000000, dec:0, dur:3000 },
+    { id:'cnt-deepfakes',target:500000, dec:0, dur:2500 },
+    { id:'cnt-market',  target:15.7,     dec:1, dur:2000 },
+    { id:'cnt-queries', target:10000000, dec:0, dur:2800 },
+    { id:'cnt-voices',  target:3200000,  dec:0, dur:2600 },
+    { id:'cnt-nocode',  target:4000000,  dec:0, dur:2700 },
+    { id:'cnt-sa',      target:65,       dec:0, dur:1800 },
+  ];
+  function fmt(n, d) {
+    if(d>0) return n.toFixed(d);
+    if(n>=1000000) return (n/1000000).toFixed(1)+'M';
+    if(n>=1000)    return (n/1000).toFixed(0)+'K';
+    return Math.floor(n)+'';
+  }
+  function animCount(cfg) {
+    const el = document.getElementById(cfg.id); if(!el) return;
+    const s = performance.now();
+    function step(now) {
+      const p = Math.min((now-s)/cfg.dur, 1);
+      const ease = 1-Math.pow(1-p,4);
+      el.textContent = fmt(ease*cfg.target, cfg.dec);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  let started = false;
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting && !started) { started=true; counters.forEach(animCount); }});
+  }, { threshold: 0.1 });
+  const cg = document.querySelector('.counters-grid');
+  if(cg) co.observe(cg);
+</script>
+<!-- ── TAGLINE HUMAN TYPEWRITER — LOOPING ── -->
+<script>
+(function() {
+  var el = document.getElementById('tagline-hero');
+  if (!el) return;
+
+  var BACK = 'BACK';
+  var caret = '<span class="tag-caret"></span>';
+
+  var finalHTML =
+    '<span class="tag-at">AI @</span>' +
+    ' <span class="tag-home">HOME</span>' +
+    ' <span class="tag-pipe"> | </span>' +
+    '<span class="tag-work">WORK</span>' +
+    ' <span class="tag-pipe"> | </span>' +
+    '<span class="tag-play">PLAY</span>';
+
+  // Full plain-text target (no HTML) for deletion pass
+  var fullText = 'AI @ HOME | WORK | PLAY';
+
+  // Typing sequence — strings = type, 'BACK' = delete, numbers = pause ms
+  var typeSeq = [
+    'A','I',' ',
+    220,
+    '@',
+    160,
+    ' ','H','O','M',
+    90,
+    'E',
+    300,
+    ' ','|',' ',
+    130,
+    'W','I',
+    110,
+    BACK, BACK,
+    180,
+    'W','O','R','K',
+    350,
+    ' ','|',' ',
+    120,
+    'P','L','A',
+    60,
+    'Y','Y',
+    90,
+    BACK,
+    240
+  ];
+
+  function jitter(base) {
+    return Math.round(base + (Math.random() - 0.5) * base * 0.5);
+  }
+
+  var text = '';
+
+  // ── PHASE 1: type it out ──
+  function runType(seq, idx, onDone) {
+    if (idx >= seq.length) { onDone(); return; }
+    var token = seq[idx++];
+    if (token === BACK) {
+      text = text.slice(0, -1);
+      el.innerHTML = text + caret;
+      setTimeout(function(){ runType(seq, idx, onDone); }, jitter(70));
+    } else if (typeof token === 'number') {
+      setTimeout(function(){ runType(seq, idx, onDone); }, jitter(token));
+    } else {
+      text += token;
+      el.innerHTML = text + caret;
+      setTimeout(function(){ runType(seq, idx, onDone); }, jitter(100));
+    }
+  }
+
+  // ── PHASE 2: hold the coloured final version ──
+  function holdFinal(onDone) {
+    el.innerHTML = finalHTML + caret;
+    setTimeout(onDone, 2800);
+  }
+
+  // ── PHASE 3: delete backward, character by character ──
+  function deleteAll(onDone) {
+    // reset text to the full plain string for deletion
+    text = fullText;
+    function del() {
+      if (text.length === 0) {
+        el.innerHTML = caret;
+        setTimeout(onDone, 400);
+        return;
+      }
+      text = text.slice(0, -1);
+      el.innerHTML = text + caret;
+      setTimeout(del, jitter(55));
+    }
+    del();
+  }
+
+  // ── LOOP ──
+  function loop() {
+    text = '';
+    el.innerHTML = caret;
+    setTimeout(function(){
+      runType(typeSeq, 0, function(){
+        holdFinal(function(){
+          deleteAll(function(){
+            loop();
+          });
+        });
+      });
+    }, 500);
+  }
+
+  // Kick off after hero title has landed
+  setTimeout(loop, 1500);
+})();
+</script>
+</body>
+</html>
