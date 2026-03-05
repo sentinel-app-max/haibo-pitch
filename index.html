@@ -79,6 +79,34 @@
   }
   .hero-title .bang { color: var(--cyan); }
 
+  .ai-letter {
+    color: var(--cyan);
+    display: inline;
+    position: relative;
+    animation: aiPulse 2.5s ease-in-out infinite;
+    text-shadow:
+      0 0 20px rgba(0,229,255,0.8),
+      0 0 40px rgba(0,229,255,0.5),
+      0 0 80px rgba(0,229,255,0.3);
+  }
+  @keyframes aiPulse {
+    0%, 100% {
+      text-shadow:
+        0 0 20px rgba(0,229,255,0.8),
+        0 0 40px rgba(0,229,255,0.5),
+        0 0 80px rgba(0,229,255,0.3);
+      color: var(--cyan);
+    }
+    50% {
+      text-shadow:
+        0 0 40px rgba(0,229,255,1),
+        0 0 80px rgba(0,229,255,0.8),
+        0 0 120px rgba(0,229,255,0.5),
+        0 0 160px rgba(0,229,255,0.2);
+      color: #ffffff;
+    }
+  }
+
   /* ghost title behind */
   .hero-title-ghost {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -1438,7 +1466,7 @@
 <section class="hero">
   <div class="hero-title-ghost">HAIBO</div>
   <div class="hero-eyebrow">A Concept Pitch for SABC+</div>
-  <h1 class="hero-title">HAIBO<span class="bang">!</span></h1>
+  <h1 class="hero-title"><span>H</span><span class="ai-letter">A</span><span class="ai-letter">I</span><span>B</span><span>O</span><span class="bang">!</span></h1>
   <p class="hero-sub" id="tagline-hero"><span class="tag-caret"></span></p>
   <p class="hero-statement">
     The technology making every South African say <strong>"Haibo!"</strong> is already in our pockets,
