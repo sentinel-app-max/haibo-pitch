@@ -880,6 +880,108 @@
   }
 
   /* ══════════════════════════════════════
+     MWC 2026 SPOTLIGHT CARDS
+  ══════════════════════════════════════ */
+  .mwc-spotlight {
+    background: var(--black);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .mwc-spotlight::before {
+    content: '';
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  .mwc-spotlight.work-space::before {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(0,255,163,.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(0,229,255,.04) 0%, transparent 55%);
+  }
+  .mwc-spotlight.home-space::before {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,45,85,.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(255,45,85,.04) 0%, transparent 55%);
+  }
+  .mwc-spotlight.play-space::before {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(245,197,66,.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(255,149,0,.05) 0%, transparent 55%);
+  }
+  .mwc-spotlight .mwc-ep-watermark {
+    position: absolute; top: 3rem; right: 3rem;
+    font-family: var(--font-display); font-size: 8rem; line-height: 1;
+    color: rgba(255,255,255,0.12); pointer-events: none; user-select: none;
+  }
+  .mwc-spotlight .mwc-space-label {
+    font-family: var(--font-mono); font-size: .55rem; letter-spacing: .35em;
+    text-transform: uppercase; margin-bottom: .6rem; opacity: .5;
+  }
+  .mwc-spotlight .mwc-kicker {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .3em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem;
+  }
+  .mwc-spotlight .mwc-kicker::before {
+    content: ''; display: block; width: 24px; height: 1px;
+  }
+  .mwc-spotlight.work-space .mwc-kicker { color: #00ffa3; }
+  .mwc-spotlight.work-space .mwc-kicker::before { background: #00ffa3; }
+  .mwc-spotlight.home-space .mwc-kicker { color: var(--red); }
+  .mwc-spotlight.home-space .mwc-kicker::before { background: var(--red); }
+  .mwc-spotlight.play-space .mwc-kicker { color: var(--gold); }
+  .mwc-spotlight.play-space .mwc-kicker::before { background: var(--gold); }
+  .mwc-spotlight .mwc-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: .95; letter-spacing: .02em;
+    color: var(--white); margin-bottom: .6rem;
+  }
+  .mwc-spotlight.work-space .mwc-title em { color: #00ffa3; font-style: normal; display: block; }
+  .mwc-spotlight.home-space .mwc-title em { color: var(--red); font-style: normal; display: block; }
+  .mwc-spotlight.play-space .mwc-title em { color: var(--gold); font-style: normal; display: block; }
+  .mwc-spotlight .mwc-tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.25rem; color: var(--gold); margin-bottom: 3.5rem;
+  }
+  .mwc-spotlight .mwc-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+  .mwc-spotlight .mwc-narrative {
+    font-size: 1rem; line-height: 1.85;
+    color: rgba(240,240,245,.75);
+  }
+  .mwc-spotlight .mwc-narrative strong { color: var(--white); }
+  .mwc-spotlight .mwc-question-block {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+  }
+  .mwc-spotlight.work-space .mwc-question-block { border: 1px solid rgba(0,255,163,.2); }
+  .mwc-spotlight.home-space .mwc-question-block { border: 1px solid rgba(255,45,85,.2); }
+  .mwc-spotlight.play-space .mwc-question-block { border: 1px solid rgba(245,197,66,.2); }
+  .mwc-spotlight .mwc-question-label {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .25em;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .mwc-spotlight.work-space .mwc-question-label { color: #00ffa3; }
+  .mwc-spotlight.home-space .mwc-question-label { color: var(--red); }
+  .mwc-spotlight.play-space .mwc-question-label { color: var(--gold); }
+  .mwc-spotlight .mwc-question-text {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.05rem; line-height: 1.75;
+    color: rgba(240,240,245,.85);
+  }
+  @media (max-width: 768px) {
+    .mwc-spotlight { padding: 4rem 2rem; }
+    .mwc-spotlight .mwc-body { grid-template-columns: 1fr; }
+  }
+
+  /* ══════════════════════════════════════
      EP10 SPOTLIGHT — THE SOUND OF AURAA
   ══════════════════════════════════════ */
   .auraa-section {
@@ -2352,6 +2454,81 @@
     </div>
   </div>
 
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     EP08 SPOTLIGHT — THE GRID THINKS (MWC 2026)
+══════════════════════════════════════ -->
+<section class="mwc-spotlight work-space">
+  <div class="mwc-ep-watermark">EP 08</div>
+  <div class="mwc-space-label reveal">Work Space</div>
+  <div class="mwc-kicker reveal">EP08 · Spotlight</div>
+  <h2 class="mwc-title reveal">The Grid <em>Thinks.</em></h2>
+  <p class="mwc-tagline reveal">South Africa's most criticised institution just became one of the world's most watched AI case studies.</p>
+
+  <div class="mwc-body">
+    <div class="mwc-narrative reveal">
+      <p>While the country argued about load-shedding, Eskom's engineers were quietly running <strong>220 AI experiments</strong> inside the national grid. Asset monitoring. Outage prediction. Load forecasting. The same grid that went dark is now learning to stay on.</p>
+      <br>
+      <p>At MWC Barcelona 2026, Eskom CTO <strong>Len de Villiers</strong> took the stage alongside executives from PetroChina, Shandong Port Group and global hospital networks. Not as a cautionary tale. As a <strong>case study in industrial intelligence</strong>.</p>
+    </div>
+    <div class="mwc-question-block reveal">
+      <div class="mwc-question-label">The HAIBO! Question</div>
+      <p class="mwc-question-text">When an AI learns the patterns of an entire national grid, who owns the intelligence it builds? And what happens to that knowledge when the organisation splits in three?</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     THE SMART GRID COMES HOME (MWC 2026)
+══════════════════════════════════════ -->
+<section class="mwc-spotlight home-space">
+  <div class="mwc-ep-watermark">HOME</div>
+  <div class="mwc-space-label reveal">Home Space</div>
+  <div class="mwc-kicker reveal">Episode · Spotlight</div>
+  <h2 class="mwc-title reveal">The Smart Grid <em>Comes Home.</em></h2>
+  <p class="mwc-tagline reveal">The grid is learning your neighbourhood. The question is whether your home is ready to talk back.</p>
+
+  <div class="mwc-body">
+    <div class="mwc-narrative reveal">
+      <p>When the national grid gets smarter, the ripple effect reaches every home connected to it. AI load forecasting reduces surprise outages. <strong>Smart meters</strong> read consumption in real time. Time-of-use pricing rewards households that shift their demand.</p>
+      <br>
+      <p>Eskom's AI pilots already include <strong>grid stability metrics and outage pattern recognition</strong> built on decades of operational data. The home is already part of the model. Most people just do not know it yet.</p>
+    </div>
+    <div class="mwc-question-block reveal">
+      <div class="mwc-question-label">The HAIBO! Question</div>
+      <p class="mwc-question-text">When an AI can predict exactly when your suburb will spike its demand and adjust supply before you reach for the kettle, is that convenience or surveillance?</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     THE IQ ERA (MWC 2026)
+══════════════════════════════════════ -->
+<section class="mwc-spotlight play-space">
+  <div class="mwc-ep-watermark">PLAY</div>
+  <div class="mwc-space-label reveal">Play Space</div>
+  <div class="mwc-kicker reveal">Episode · Spotlight</div>
+  <h2 class="mwc-title reveal">The IQ Era · <em>Your Phone Has Started Thinking.</em></h2>
+  <p class="mwc-tagline reveal">It stopped being a device. It became an agent. And most people missed the moment it happened.</p>
+
+  <div class="mwc-body">
+    <div class="mwc-narrative reveal">
+      <p>At Mobile World Congress 2026, the theme was not connectivity. It was <strong>intelligence</strong>. Humanoid robots sorted packages on the exhibition floor. Foldable screens curved around conversations. And the phone in your pocket quietly crossed a line — from a smarter search bar to something that <strong>reasons, plans and acts on your behalf</strong>.</p>
+      <br>
+      <p>For African users the IQ Era arrives unevenly. The device that thinks in Shanghai <strong>thinks differently in Soweto</strong>.</p>
+    </div>
+    <div class="mwc-question-block reveal">
+      <div class="mwc-question-label">The HAIBO! Question</div>
+      <p class="mwc-question-text">When your phone becomes an AI agent that knows your schedule, your spending, your relationships and your location, is it still yours?</p>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
