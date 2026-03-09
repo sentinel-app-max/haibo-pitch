@@ -1527,14 +1527,11 @@
       <div class="pod-label avatar-label"><span class="dot"></span>The Production Signature</div>
       <div class="avatar-frame" id="axis-sequence" style="position:relative;overflow:hidden;">
         <div class="orbit-wrap"><div class="orbit-ring"></div></div>
-        <video id="axis-v1" autoplay muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:top center;">
-          <source src="https://cdn.shopify.com/videos/c/o/v/d7f900c5d0e645f988f13b4a8a65763f.mp4" type="video/mp4">
+        <video id="axis-v1" autoplay muted playsinline poster="Script1_static.png" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+          <source src="https://cdn.shopify.com/videos/c/o/v/f933b5fb052e41588227d71ca06a1480.mp4" type="video/mp4">
         </video>
-        <video id="axis-v2" muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:none;">
-          <source src="https://cdn.shopify.com/videos/c/o/v/fc0d57cb9d12436496a41dd69c67500d.mp4" type="video/mp4">
-        </video>
-        <video id="axis-v3" muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:none;">
-          <source src="https://cdn.shopify.com/videos/c/o/v/3692e73ad72f4b6a903c4ddf3ac2d33c.mp4" type="video/mp4">
+        <video id="axis-v2" muted playsinline poster="Script2_static.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:none;">
+          <source src="https://cdn.shopify.com/videos/c/o/v/dc8320a7a77249ee9d85bd5c8ab5cc83.mp4" type="video/mp4">
         </video>
         <div id="axis-transition" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;opacity:0;"></div>
         <button class="video-mute-btn cyan" aria-label="Toggle sound" onclick="const vids=document.querySelectorAll('#axis-sequence video');let v;vids.forEach(el=>{if(el.style.display!=='none'&&!el.paused)v=el;});if(!v)v=vids[0];v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊';">🔇</button>
@@ -2474,13 +2471,12 @@
 
 <!-- ── SCRIPTS ── -->
 <script>
-  // AXIS three-video sequence
+  // AXIS two-video sequence
   (function(){
     const v1 = document.getElementById('axis-v1');
     const v2 = document.getElementById('axis-v2');
-    const v3 = document.getElementById('axis-v3');
     const overlay = document.getElementById('axis-transition');
-    if(!v1||!v2||!v3||!overlay) return;
+    if(!v1||!v2||!overlay) return;
 
     function fireTransition(from, to, bg, transform){
       const isMuted = from.muted;
@@ -2512,14 +2508,7 @@
         { start: 'translateX(-100%)', end: 'translateX(100%)' }
       );
     });
-
-    v2.addEventListener('ended', function(){
-      fireTransition(v2, v3,
-        'linear-gradient(90deg, transparent, rgba(245,197,66,0.9), transparent)',
-        { start: 'skewX(-15deg) translateX(-120%)', end: 'skewX(-15deg) translateX(120%)' }
-      );
-    });
-    // v3 ends: hold on final frame, no loop
+    // v2 ends: hold on final frame, no loop
   })();
 </script>
 <script>
