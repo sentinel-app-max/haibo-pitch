@@ -2508,7 +2508,19 @@
         { start: 'translateX(-100%)', end: 'translateX(100%)' }
       );
     });
-    // v2 ends: hold on final frame, no loop
+
+    v2.addEventListener('ended', function(){
+      fireTransition(v2, v1,
+        'linear-gradient(90deg, transparent, rgba(245,197,66,0.9), transparent)',
+        { start: 'skewX(-15deg) translateX(-120%)', end: 'skewX(-15deg) translateX(120%)' }
+      );
+    });
+
+    // Click to pause/play
+    [v1, v2].forEach(function(v){
+      v.style.cursor = 'pointer';
+      v.addEventListener('click', function(){ v.paused ? v.play() : v.pause(); });
+    });
   })();
 </script>
 <script>
